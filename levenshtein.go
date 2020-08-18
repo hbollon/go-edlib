@@ -15,7 +15,7 @@ func levenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if runeStr1 == runeStr2 {
+	} else if equal(runeStr1, runeStr2) {
 		return 0
 	}
 
@@ -33,7 +33,7 @@ func levenshteinDistance(str1, str2 string) int {
 			if runeStr1[y-1] != runeStr2[x-1] {
 				i = 1
 			}
-			column[y] = Min(Min(column[y]+1, column[y-1]+1), lastkey+i)
+			column[y] = min(min(column[y]+1, column[y-1]+1), lastkey+i)
 			lastkey = oldkey
 		}
 	}
