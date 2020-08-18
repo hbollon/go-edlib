@@ -15,6 +15,8 @@ func levenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
+	} else if runeStr1 == runeStr2 {
+		return 0
 	}
 
 	column := make([]int, runeStr1len+1)
