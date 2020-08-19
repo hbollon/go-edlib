@@ -6,8 +6,14 @@ func LCS(str1, str2 string) int {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
+	if len(runeStr1) == 0 || len(runeStr2) == 0 {
+		return 0
+	} else if equal(runeStr1, runeStr2) {
+		return len(runeStr1)
+	}
+
 	// 2D Array that will contain str1 and str2 LCS
-	lcsMatrix := make([][]int, len(runeStr1)+1) // Make the outer slice and give it size 10
+	lcsMatrix := make([][]int, len(runeStr1)+1)
 	for i := 0; i < len(runeStr1)+1; i++ {
 		lcsMatrix[i] = make([]int, len(runeStr2)+1)
 		for j := 0; j < len(runeStr2)+1; j++ {
@@ -31,6 +37,14 @@ func LCS(str1, str2 string) int {
 // LCSEditDistance determines the edit distance between two strings using LCS function
 // (allow only insert and delete operations)
 func LCSEditDistance(str1, str2 string) int {
+	if len(str1) == 0 {
+		return len(str2)
+	} else if len(str2) == 0 {
+		return len(str1)
+	} else if str1 == str2 {
+		return 0
+	}
+
 	lcs := LCS(str1, str2)
 	return (len(str1) - lcs) + (len(str2) - lcs)
 }

@@ -14,6 +14,9 @@ func TestLCS(t *testing.T) {
 		args args
 		want int
 	}{
+		{"AB/empty", args{"AB", ""}, 0},
+		{"empty/AB", args{"", "AB"}, 0},
+		{"AB/AB", args{"AB", "AB"}, 2},
 		{"ABCD/ACBAD", args{"ABCD", "ACBAD"}, 3},
 		{"ABCDGH/AEDFHR", args{"ABCDGH", "AEDFHR"}, 3},
 		{"AGGTAB/GXTXAYB", args{"AGGTAB", "GXTXAYB"}, 4},
@@ -38,6 +41,9 @@ func TestLCSEditDistance(t *testing.T) {
 		args args
 		want int
 	}{
+		{"AB/empty", args{"AB", ""}, 2},
+		{"empty/AB", args{"", "AB"}, 2},
+		{"AB/AB", args{"AB", "AB"}, 0},
 		{"CAT/CUT", args{"CAT", "CUT"}, 2},
 		{"ACB/AB", args{"ACB", "AB"}, 1},
 		{"ABC/ACD", args{"ABC", "ACD"}, 2},
