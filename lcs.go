@@ -27,3 +27,10 @@ func LCS(str1, str2 string) int {
 
 	return lcsMatrix[len(runeStr1)][len(runeStr2)]
 }
+
+// LCSEditDistance determines the edit distance between two strings using LCS function
+// (allow only insert and delete operations)
+func LCSEditDistance(str1, str2 string) int {
+	lcs := LCS(str1, str2)
+	return (len(str1) - lcs) + (len(str2) - lcs)
+}
