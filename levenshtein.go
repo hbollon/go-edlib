@@ -1,14 +1,14 @@
 package edlib
 
-// levenshteinDistance calculate the distance between two string
+// LevenshteinDistance calculate the distance between two string
 // This algorithm allow insertions, deletions and substitutions to change one string to the second
 // Compatible with non-ASCII characters
-func levenshteinDistance(str1, str2 string) int {
+func LevenshteinDistance(str1, str2 string) int {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
-	// Get and store lenght of these strings
+	// Get and store length of these strings
 	runeStr1len := len(runeStr1)
 	runeStr2len := len(runeStr2)
 	if runeStr1len == 0 {
