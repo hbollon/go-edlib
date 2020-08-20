@@ -40,3 +40,39 @@ func LevenshteinDistance(str1, str2 string) int {
 
 	return column[runeStr1len]
 }
+
+// DamerauLevenshteinDistance calculate the distance between two string
+// Optimal string alignment distance variant that use extention of the Wagner-Fisher dynamic programming algorithm
+// Allowing insertions, deletions, substitutions and transpositions to change one string to the second
+// Compatible with non-ASCII characters
+func OSADamerauLevenshteinDistance(str1, str2 string) int {
+	// Convert string parameters to rune arrays to be compatible with non-ASCII
+	runeStr1 := []rune(str1)
+	runeStr2 := []rune(str2)
+
+	// 2D Array
+	matrix := make([][]int, len(runeStr1))
+	for i := 0; i < len(runeStr1); i++ {
+		matrix[i] = make([]int, len(runeStr2))
+		for j := 0; j < len(runeStr2); j++ {
+			matrix[i][j] = 0
+		}
+	}
+
+	var count int
+	for i := 1; i < len(runeStr1); i++ {
+		for j := 1; j < len(runeStr2); j++ {
+			if runeStr1[i] == runeStr2[j] {
+				count = 0
+			} else {
+				count = 1
+			}
+
+			matrix[i][j] = min(min(matrix[i-1][j], matrix[i][j-1]), matrix[i-1][j-1]+count)
+			if i > 1 && j > 1 && runeStr1[i] == runeStr2[j-1] && runeStr1[i-1] == runeStr2[j] {
+				matrix[i][j] = min(matrix[i][j], matrix[i-2][j-2]+1)
+			}
+		}
+	}
+	return matrix[len(runeStr1)][len(runeStr2)]
+}
