@@ -14,9 +14,9 @@ func LCS(str1, str2 string) int {
 
 	// 2D Array that will contain str1 and str2 LCS
 	lcsMatrix := make([][]int, len(runeStr1)+1)
-	for i := 0; i < len(runeStr1)+1; i++ {
+	for i := 0; i <= len(runeStr1); i++ {
 		lcsMatrix[i] = make([]int, len(runeStr2)+1)
-		for j := 0; j < len(runeStr2)+1; j++ {
+		for j := 0; j <= len(runeStr2); j++ {
 			lcsMatrix[i][j] = 0
 		}
 	}
