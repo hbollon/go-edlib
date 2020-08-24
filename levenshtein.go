@@ -33,7 +33,10 @@ func LevenshteinDistance(str1, str2 string) int {
 			if runeStr1[y-1] != runeStr2[x-1] {
 				i = 1
 			}
-			column[y] = min(min(column[y]+1, column[y-1]+1), lastkey+i)
+			column[y] = min(
+				min(column[y]+1, // insert
+					column[y-1]+1), // delete
+				lastkey+i) // substitution
 			lastkey = oldkey
 		}
 	}
@@ -87,9 +90,9 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 				count = 1
 			}
 
-			matrix[i][j] = min(min(matrix[i-1][j]+1, matrix[i][j-1]+1), matrix[i-1][j-1]+count)
+			matrix[i][j] = min(min(matrix[i-1][j]+1, matrix[i][j-1]+1), matrix[i-1][j-1]+count) // insertion, deletion, substitution
 			if i > 1 && j > 1 && runeStr1[i-1] == runeStr2[j-2] && runeStr1[i-2] == runeStr2[j-1] {
-				matrix[i][j] = min(matrix[i][j], matrix[i-2][j-2]+1)
+				matrix[i][j] = min(matrix[i][j], matrix[i-2][j-2]+1) // translation
 			}
 		}
 	}
@@ -97,12 +100,82 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 }
 
 // DamerauLevenshteinDistance calculate the distance between two string
+// This algorithm computes the true Damerau–Levenshtein distance with adjacent transpositions
 // Allowing insertions, deletions, substitutions and transpositions to change one string to the second
 // Compatible with non-ASCII characters
-/* func DamerauLevenshteinDistance(str1, str2 string) int {
+func DamerauLevenshteinDistance(str1, str2 string) int {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
-	da := make([]int)
-} */
+	// Get and store length of these strings
+	runeStr1len := len(runeStr1)
+	runeStr2len := len(runeStr2)
+	if runeStr1len == 0 {
+		return runeStr2len
+	} else if runeStr2len == 0 {
+		return runeStr1len
+	} else if equal(runeStr1, runeStr2) {
+		return 0
+	}
+
+	// Create alphabet based on input strings
+	da := make(map[rune]int)
+	for i := 0; i < runeStr1len; i++ {
+		da[runeStr1[i]] = 0
+	}
+	for i := 0; i < runeStr2len; i++ {
+		da[runeStr2[i]] = 0
+	}
+
+	// 2D Array for distance matrix : matrix[0..str1.length+2][0..s2.length+2]
+	matrix := make([][]int, runeStr1len+2)
+	for i := 0; i <= runeStr1len+1; i++ {
+		matrix[i] = make([]int, runeStr2len+2)
+		for j := 0; j <= runeStr2len+1; j++ {
+			matrix[i][j] = 0
+		}
+	}
+
+	// Maximum possible distance
+	maxDist := runeStr1len + runeStr2len
+
+	// Initialize matrix
+	matrix[0][0] = maxDist
+	for i := 0; i <= runeStr1len; i++ {
+		matrix[i+1][0] = maxDist
+		matrix[i+1][1] = i
+	}
+	for i := 0; i <= runeStr2len; i++ {
+		matrix[0][i+1] = maxDist
+		matrix[1][i+1] = i
+	}
+
+	// Process edit distance
+	var cost int
+	for i := 1; i <= runeStr1len; i++ {
+		db := 0
+		for j := 1; j <= runeStr2len; j++ {
+			i1 := da[runeStr2[j-1]]
+			j1 := db
+			if runeStr1[i-1] == runeStr2[j-1] {
+				cost = 0
+				db = j
+			} else {
+				cost = 1
+			}
+
+			matrix[i+1][j+1] = min(
+				min(
+					matrix[i+1][j]+1,  // Addition
+					matrix[i][j+1]+1), // Deletion
+				min(
+					matrix[i][j]+cost, // Substitution
+					matrix[i1][j1]+(i-i1-1)+1+(j-j1-1))) // Transposition
+		}
+
+		da[runeStr1[i-1]] = i
+	}
+
+	return matrix[runeStr1len+1][runeStr2len+1]
+}
