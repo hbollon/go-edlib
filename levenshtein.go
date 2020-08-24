@@ -41,8 +41,9 @@ func LevenshteinDistance(str1, str2 string) int {
 	return column[runeStr1len]
 }
 
-// DamerauLevenshteinDistance calculate the distance between two string
+// OSADamerauLevenshteinDistance calculate the distance between two string
 // Optimal string alignment distance variant that use extention of the Wagner-Fisher dynamic programming algorithm
+// Doesn't allow multiple transformations on a same substring
 // Allowing insertions, deletions, substitutions and transpositions to change one string to the second
 // Compatible with non-ASCII characters
 func OSADamerauLevenshteinDistance(str1, str2 string) int {
@@ -50,29 +51,58 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
+	// Get and store length of these strings
+	runeStr1len := len(runeStr1)
+	runeStr2len := len(runeStr2)
+	if runeStr1len == 0 {
+		return runeStr2len
+	} else if runeStr2len == 0 {
+		return runeStr1len
+	} else if equal(runeStr1, runeStr2) {
+		return 0
+	}
+
 	// 2D Array
-	matrix := make([][]int, len(runeStr1))
-	for i := 0; i < len(runeStr1); i++ {
-		matrix[i] = make([]int, len(runeStr2))
-		for j := 0; j < len(runeStr2); j++ {
+	matrix := make([][]int, runeStr1len+1)
+	for i := 0; i <= runeStr1len; i++ {
+		matrix[i] = make([]int, runeStr2len+1)
+		for j := 0; j <= runeStr2len; j++ {
 			matrix[i][j] = 0
 		}
 	}
 
+	for i := 0; i <= runeStr1len; i++ {
+		matrix[i][0] = i
+	}
+	for j := 0; j <= runeStr2len; j++ {
+		matrix[0][j] = j
+	}
+
 	var count int
-	for i := 1; i < len(runeStr1); i++ {
-		for j := 1; j < len(runeStr2); j++ {
-			if runeStr1[i] == runeStr2[j] {
+	for i := 1; i <= runeStr1len; i++ {
+		for j := 1; j <= runeStr2len; j++ {
+			if runeStr1[i-1] == runeStr2[j-1] {
 				count = 0
 			} else {
 				count = 1
 			}
 
-			matrix[i][j] = min(min(matrix[i-1][j], matrix[i][j-1]), matrix[i-1][j-1]+count)
-			if i > 1 && j > 1 && runeStr1[i] == runeStr2[j-1] && runeStr1[i-1] == runeStr2[j] {
+			matrix[i][j] = min(min(matrix[i-1][j]+1, matrix[i][j-1]+1), matrix[i-1][j-1]+count)
+			if i > 1 && j > 1 && runeStr1[i-1] == runeStr2[j-2] && runeStr1[i-2] == runeStr2[j-1] {
 				matrix[i][j] = min(matrix[i][j], matrix[i-2][j-2]+1)
 			}
 		}
 	}
-	return matrix[len(runeStr1)][len(runeStr2)]
+	return matrix[runeStr1len][runeStr2len]
 }
+
+// DamerauLevenshteinDistance calculate the distance between two string
+// Allowing insertions, deletions, substitutions and transpositions to change one string to the second
+// Compatible with non-ASCII characters
+/* func DamerauLevenshteinDistance(str1, str2 string) int {
+	// Convert string parameters to rune arrays to be compatible with non-ASCII
+	runeStr1 := []rune(str1)
+	runeStr2 := []rune(str2)
+
+	da := make([]int)
+} */
