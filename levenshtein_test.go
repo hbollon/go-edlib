@@ -23,6 +23,9 @@ func Test_levenshteinDistance(t *testing.T) {
 		{"bbb/a", args{"bbb", "a"}, 3},
 		{"kitten/sitting", args{"kitten", "sitting"}, 3},
 		{"distance/difference", args{"distance", "difference"}, 5},
+		{"a cat/an abct", args{"a cat", "an abct"}, 4},
+		{"こにんち/こんにちは", args{"こにんち", "こんにちは"}, 3}, // "Hello" in Japanese
+		{"🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂"}, 2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -51,6 +54,9 @@ func TestOSADamerauLevenshteinDistance(t *testing.T) {
 		{"ab/aaa", args{"ab", "aaa"}, 2},
 		{"bbb/a", args{"bbb", "a"}, 3},
 		{"ca/abc", args{"ca", "abc"}, 3},
+		{"a cat/an abct", args{"a cat", "an abct"}, 4},
+		{"こにんち/こんにちは", args{"こにんち", "こんにちは"}, 2}, // "Hello" in Japanese
+		{"🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂"}, 2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -79,6 +85,9 @@ func TestDamerauLevenshteinDistance(t *testing.T) {
 		{"ab/aaa", args{"ab", "aaa"}, 2},
 		{"bbb/a", args{"bbb", "a"}, 3},
 		{"ca/abc", args{"ca", "abc"}, 2},
+		{"a cat/an abct", args{"a cat", "an abct"}, 3},
+		{"こにんち/こんにちは", args{"こにんち", "こんにちは"}, 2}, // "Hello" in Japanese
+		{"🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂"}, 2},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
