@@ -15,6 +15,7 @@ func TestJaroSimilarity(t *testing.T) {
 		{"First arg empty", args{"", "abcde"}, 0.0},
 		{"Second arg empty", args{"abcde", ""}, 0.0},
 		{"Same args", args{"abcde", "abcde"}, 1.0},
+		{"No characters match", args{"abcd", "effgghh"}, 0.0},
 		{"CRATE/TRACE", args{"CRATE", "TRACE"}, 0.73333335},
 		{"MARTHA/MARHTA", args{"MARTHA", "MARHTA"}, 0.9444444},
 		{"DIXON/DICKSONX", args{"DIXON", "DICKSONX"}, 0.76666665},
