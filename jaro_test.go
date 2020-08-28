@@ -16,6 +16,9 @@ func TestJaroSimilarity(t *testing.T) {
 		{"Second arg empty", args{"abcde", ""}, 0.0},
 		{"Same args", args{"abcde", "abcde"}, 1.0},
 		{"CRATE/TRACE", args{"CRATE", "TRACE"}, 0.73333335},
+		{"MARTHA/MARHTA", args{"MARTHA", "MARHTA"}, 0.9444444},
+		{"DIXON/DICKSONX", args{"DIXON", "DICKSONX"}, 0.76666665},
+		{"jellyfish/smellyfish", args{"jellyfish", "smellyfish"}, 0.8962963},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
