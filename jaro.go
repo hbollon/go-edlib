@@ -58,3 +58,40 @@ func JaroSimilarity(str1, str2 string) float32 {
 		float32(match)/float32(runeStr2len) +
 		(float32(match)-t)/float32(match)) / 3.0
 }
+
+// JaroWinklerSimilarity return a similarity index (between 0 and 1)
+// Use Jaro similarity and after look for a common prefix (length <= 4)
+func JaroWinklerSimilarity(str1, str2 string) float32 {
+	// Get Jaro similarity index between str1 and str2
+	jaroSim := JaroSimilarity(str1, str2)
+
+	if jaroSim != 0.0 && jaroSim != 1.0 {
+		// Convert string parameters to rune arrays to be compatible with non-ASCII
+		runeStr1 := []rune(str1)
+		runeStr2 := []rune(str2)
+
+		// Get and store length of these strings
+		runeStr1len := len(runeStr1)
+		runeStr2len := len(runeStr2)
+
+		var prefix int
+
+		// Find length of the common prefix
+		for i := 0; i < min(runeStr1len, runeStr2len); i++ {
+			if runeStr1[i] == runeStr2[i] {
+				prefix++
+			} else {
+				break
+			}
+		}
+
+		// Normalized prefix count with Winkler's constraint
+		// (prefix length must be inferior or equal to 4)
+		prefix = min(prefix, 4)
+
+		// Return calculated Jaro-Winkler similarity index
+		return jaroSim + 0.1*float32(prefix)*(1-jaroSim)
+	}
+
+	return jaroSim
+}
