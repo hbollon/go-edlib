@@ -18,7 +18,7 @@
   </a>
 </p>
 
-> Golang string comparison and edit distance algorithms library featuring : Levenshtein, LCS, Hamming, Damerau levenshtein (OSA and Adjacent transpositions algorithms) etc...
+> Golang string comparison and edit distance algorithms library featuring : Levenshtein, LCS, Hamming, Damerau levenshtein (OSA and Adjacent transpositions algorithms), Jaro-Winkler, etc...
 
 ---
 
@@ -51,11 +51,11 @@ This library is 100% test covered 😁
 - [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance), with following variants :
     - OSA (Optimal string alignment) ✨
     - Adjacent transpositions ✨
+- [Jaro & Jaro-Winkler](https://fr.wikipedia.org/wiki/Distance_de_Jaro-Winkler) similarity algorithms ✨
     
 - ASCII and Unicode compatibility ! 🥳
 
 ### Coming soon :
-- [Jaro distance](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance)
 - Computed similarity percentage functions based on all available edit distance algorithms in this lib
 - LCS backtrack and diff functions
 - And many more ! 😁
