@@ -10,6 +10,7 @@ func JaroSimilarity(str1, str2 string) float32 {
 	// Get and store length of these strings
 	runeStr1len := len(runeStr1)
 	runeStr2len := len(runeStr2)
+	maxStrLength := max(runeStr1len, runeStr2len)
 	if runeStr1len == 0 || runeStr2len == 0 {
 		return 0.0
 	} else if equal(runeStr1, runeStr2) {
@@ -18,13 +19,13 @@ func JaroSimilarity(str1, str2 string) float32 {
 
 	var match int
 	// Maximum matching distance allowed
-	maxDist := max(runeStr1len, runeStr2len)/2 - 1
+	maxDist := maxStrLength/2 - 1
 	// Correspondence matrix (1 for matching and 0 if it's not the case)
 	// [1..lenStr1+1][1..lenStr2+1]
-	matchingMatrix := make([][]int, runeStr1len+1)
-	for i := 0; i <= runeStr1len; i++ {
-		matchingMatrix[i] = make([]int, runeStr2len+1)
-		for j := 0; j <= runeStr2len; j++ {
+	matchingMatrix := make([][]int, maxStrLength+1)
+	for i := 0; i <= maxStrLength; i++ {
+		matchingMatrix[i] = make([]int, maxStrLength+1)
+		for j := 0; j <= maxStrLength; j++ {
 			matchingMatrix[i][j] = 0
 		}
 	}
