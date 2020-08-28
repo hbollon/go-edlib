@@ -1,7 +1,7 @@
 package edlib
 
-import "fmt"
-
+// JaroSimilarity return a similarity index (between 0 and 1)
+// It use Jaro distance algorithm and allow only transposition operation
 func JaroSimilarity(str1, str2 string) float32 {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
@@ -19,21 +19,16 @@ func JaroSimilarity(str1, str2 string) float32 {
 	var match int
 	// Maximum matching distance allowed
 	maxDist := max(runeStr1len, runeStr2len)/2 - 1
-	// Correspondence matrix (1 for matching and 0 if it's not the case)
-	// [1..lenStr1+1][1..lenStr2+1]
-	matchingMatrix := make([][]int, runeStr1len+1)
-	for i := 0; i <= runeStr1len; i++ {
-		matchingMatrix[i] = make([]int, runeStr2len+1)
-		for j := 0; j <= runeStr2len; j++ {
-			matchingMatrix[i][j] = 0
-		}
-	}
+	// Correspondence tables (1 for matching and 0 if it's not the case)
+	str1Table := make([]int, runeStr1len)
+	str2Table := make([]int, runeStr2len)
 
 	// Check for matching characters in both strings
 	for i := 0; i < runeStr1len; i++ {
 		for j := max(0, i-maxDist); j < min(runeStr2len, i+maxDist+1); j++ {
-			if runeStr1[i] == runeStr2[j] && matchingMatrix[i+1][j+1] == 0 {
-				matchingMatrix[i+1][j+1] = 1
+			if runeStr1[i] == runeStr2[j] && str2Table[j] == 0 {
+				str1Table[i] = 1
+				str2Table[j] = 1
 				match++
 				break
 			}
@@ -47,17 +42,19 @@ func JaroSimilarity(str1, str2 string) float32 {
 	var p int
 	// Check for possible translations
 	for i := 0; i < runeStr1len; i++ {
-		if matchingMatrix[i+1][i+1] == 1 {
-			for matchingMatrix[i+1][p+1] == 0 {
+		if str1Table[i] == 1 {
+			for str2Table[p] == 0 {
 				p++
 			}
 			if runeStr1[i] != runeStr2[p] {
 				t++
 			}
+			p++
 		}
 	}
 	t /= 2
 
-	fmt.Printf("Jaro (%s/%s): %f\n", str1, str2, (float32(match)/float32(runeStr1len)+float32(match)/float32(runeStr2len)+(float32(match)-t)/float32(match))/3.0)
-	return (float32(match)/float32(runeStr1len) + float32(match)/float32(runeStr2len) + (float32(match)-t)/float32(match)) / 3.0
+	return (float32(match)/float32(runeStr1len) +
+		float32(match)/float32(runeStr2len) +
+		(float32(match)-t)/float32(match)) / 3.0
 }
