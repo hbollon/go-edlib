@@ -1,6 +1,10 @@
 package edlib
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/hbollon/go-edlib"
+)
 
 func TestHammingDistance(t *testing.T) {
 	type args struct {
@@ -21,7 +25,7 @@ func TestHammingDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := HammingDistance(tt.args.str1, tt.args.str2)
+			got, err := edlib.HammingDistance(tt.args.str1, tt.args.str2)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("HammingDistance() error = %v, wantErr %v", err, tt.wantErr)
 				return

@@ -70,6 +70,13 @@ go get github.com/hbollon/go-edlib
 
 And import it into your project.
 
+### Run tests
+If you want to run all units tests just run :
+```bash
+cd tests/
+go test # Add desired parameters to this command if you want
+```
+
 ## Documentation
 
 **You can find all the documentation here :** [Documentation](https://godoc.org/github.com/hbollon/go-edlib) 

@@ -2,6 +2,8 @@ package edlib
 
 import (
 	"testing"
+
+	"github.com/hbollon/go-edlib"
 )
 
 func TestLCS(t *testing.T) {
@@ -24,7 +26,7 @@ func TestLCS(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LCS(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := edlib.LCS(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("LCS() = %v, want %v", got, tt.want)
 			}
 		})
@@ -54,7 +56,7 @@ func TestLCSEditDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LCSEditDistance(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := edlib.LCSEditDistance(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("LCSEditDistance() = %v, want %v", got, tt.want)
 			}
 		})

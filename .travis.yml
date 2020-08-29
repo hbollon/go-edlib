@@ -7,6 +7,7 @@ go:
   - "1.15.x"
 
 script:
+  - cd tests/
   - go test -v -race -coverprofile=coverage.txt -covermode=atomic
 
 after_success:

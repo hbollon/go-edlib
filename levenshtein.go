@@ -45,7 +45,7 @@ func LevenshteinDistance(str1, str2 string) int {
 }
 
 // OSADamerauLevenshteinDistance calculate the distance between two string
-// Optimal string alignment distance variant that use extention of the Wagner-Fisher dynamic programming algorithm
+// Optimal string alignment distance variant that use extension of the Wagner-Fisher dynamic programming algorithm
 // Doesn't allow multiple transformations on a same substring
 // Allowing insertions, deletions, substitutions and transpositions to change one string to the second
 // Compatible with non-ASCII characters
