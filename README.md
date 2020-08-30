@@ -52,11 +52,11 @@ This library is 100% test covered 😁
     - OSA (Optimal string alignment) ✨
     - Adjacent transpositions ✨
 - [Jaro & Jaro-Winkler](https://fr.wikipedia.org/wiki/Distance_de_Jaro-Winkler) similarity algorithms ✨
-    
+
+- Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨    
 - ASCII and Unicode compatibility ! 🥳
 
 ### Coming soon :
-- Computed similarity percentage functions based on all available edit distance algorithms in this lib
 - LCS backtrack and diff functions
 - And many more ! 😁
 
@@ -73,8 +73,7 @@ And import it into your project.
 ### Run tests
 If you want to run all units tests just run :
 ```bash
-cd tests/
-go test # Add desired parameters to this command if you want
+go test ./... -coverpkg=./... # Add desired parameters to this command if you want
 ```
 
 ## Documentation
