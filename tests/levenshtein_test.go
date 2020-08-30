@@ -57,6 +57,8 @@ func TestOSADamerauLevenshteinDistance(t *testing.T) {
 		{"bbb/a", args{"bbb", "a"}, 3},
 		{"ca/abc", args{"ca", "abc"}, 3},
 		{"a cat/an abct", args{"a cat", "an abct"}, 4},
+		{"dixon/dicksonx", args{"dixon", "dicksonx"}, 4},
+		{"jellyfish/smellyfish", args{"jellyfish", "smellyfish"}, 2},
 		{"こにんち/こんにちは", args{"こにんち", "こんにちは"}, 2}, // "Hello" in Japanese
 		{"🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂"}, 2},
 	}
@@ -88,6 +90,8 @@ func TestDamerauLevenshteinDistance(t *testing.T) {
 		{"bbb/a", args{"bbb", "a"}, 3},
 		{"ca/abc", args{"ca", "abc"}, 2},
 		{"a cat/an abct", args{"a cat", "an abct"}, 3},
+		{"dixon/dicksonx", args{"dixon", "dicksonx"}, 4},
+		{"jellyfish/smellyfish", args{"jellyfish", "smellyfish"}, 2},
 		{"こにんち/こんにちは", args{"こにんち", "こんにちは"}, 2}, // "Hello" in Japanese
 		{"🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂"}, 2},
 	}

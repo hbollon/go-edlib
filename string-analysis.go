@@ -3,7 +3,7 @@ package edlib
 import "errors"
 
 // AlgorithMethod is an Integer type used to identify edit distance algorithms
-type AlgorithMethod int
+type AlgorithMethod uint8
 
 const (
 	Levenshtein           AlgorithMethod = iota

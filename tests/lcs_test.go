@@ -45,6 +45,7 @@ func TestLCSEditDistance(t *testing.T) {
 	}{
 		{"AB/empty", args{"AB", ""}, 2},
 		{"empty/AB", args{"", "AB"}, 2},
+		{"No characters match", args{"abcd", "effgghh"}, 11},
 		{"AB/AB", args{"AB", "AB"}, 0},
 		{"CAT/CUT", args{"CAT", "CUT"}, 2},
 		{"ACB/AB", args{"ACB", "AB"}, 1},
