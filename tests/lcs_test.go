@@ -33,6 +33,39 @@ func TestLCS(t *testing.T) {
 	}
 }
 
+func TestLCSBacktrack(t *testing.T) {
+	type args struct {
+		str1 string
+		str2 string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    string
+		wantErr bool
+	}{
+		{"AB/empty", args{"AB", ""}, "", true},
+		{"empty/AB", args{"", "AB"}, "", true},
+		{"AB/AB", args{"AB", "AB"}, "AB", false},
+		{"ABCD/ACBAD", args{"ABCD", "ACBAD"}, "ABD", false},
+		{"ABCDGH/AEDFHR", args{"ABCDGH", "AEDFHR"}, "ADH", false},
+		{"AGGTAB/GXTXAYB", args{"AGGTAB", "GXTXAYB"}, "GTAB", false},
+		{"XMJYAUZ/MZJAWXU", args{"XMJYAUZ", "MZJAWXU"}, "MJAU", false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := edlib.LCSBacktrack(tt.args.str1, tt.args.str2)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("LCSBacktrack() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("LCSBacktrack() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestLCSEditDistance(t *testing.T) {
 	type args struct {
 		str1 string
