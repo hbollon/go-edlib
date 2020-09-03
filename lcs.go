@@ -119,14 +119,10 @@ func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n in
 		}
 	} else {
 		if lcsMatrix[m-1][n] >= lcsMatrix[m][n-1] {
-			for key := range processLCSBacktrackAll(str1, str2, lcsMatrix, m-1, n) {
-				substrings[key] = struct{}{}
-			}
+			substrings.addAll(processLCSBacktrackAll(str1, str2, lcsMatrix, m-1, n))
 		}
 		if lcsMatrix[m][n-1] >= lcsMatrix[m-1][n] {
-			for key := range processLCSBacktrackAll(str1, str2, lcsMatrix, m, n-1) {
-				substrings[key] = struct{}{}
-			}
+			substrings.addAll(processLCSBacktrackAll(str1, str2, lcsMatrix, m, n-1))
 		}
 	}
 

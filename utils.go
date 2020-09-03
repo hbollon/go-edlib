@@ -32,6 +32,16 @@ func equal(a, b []rune) bool {
 	return true
 }
 
+/*
+	StringHashMap methods
+*/
+
+func (m StringHashMap) addAll(srcMap StringHashMap) {
+	for key := range srcMap {
+		m[key] = struct{}{}
+	}
+}
+
 // Convert and return an StringHashMap to string array
 func (m StringHashMap) toArray() []string {
 	var arr []string
