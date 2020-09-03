@@ -2,7 +2,6 @@ package edlib
 
 import (
 	"errors"
-	"fmt"
 )
 
 // LCS takes two strings and compute their LCS(Longuest Subsequence Problem)
@@ -105,8 +104,13 @@ func LCSBacktrackAll(str1, str2 string) ([]string, error) {
 	}
 
 	all := processLCSBacktrackAll(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2))
-	fmt.Println(all)
-	return []string{str1}, nil
+	var lcss []string
+	var index int
+	for key := range all {
+		lcss = append(lcss, key)
+		index++
+	}
+	return lcss, nil
 }
 
 func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n int) map[string]struct{} {
