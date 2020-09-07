@@ -105,6 +105,36 @@ func TestLCSBacktrackAll(t *testing.T) {
 	}
 }
 
+func TestLCSDiff(t *testing.T) {
+	type args struct {
+		str1 string
+		str2 string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    []string
+		wantErr bool
+	}{
+		{"AB/empty", args{"AB", ""}, nil, true},
+		{"empty/AB", args{"", "AB"}, nil, true},
+		{"AB/AB", args{"AB", "AB"}, []string{"AB"}, false},
+		{"computer/houseboat", args{"computer", "houseboat"}, []string{" h c o m p u s e b o a t e r", " + -   - -   + + + + +   - -"}, false},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := edlib.LCSDiff(tt.args.str1, tt.args.str2)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("LCSDiff() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("LCSDiff() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
 func TestLCSEditDistance(t *testing.T) {
 	type args struct {
 		str1 string

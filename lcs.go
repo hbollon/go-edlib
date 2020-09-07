@@ -2,6 +2,7 @@ package edlib
 
 import (
 	"errors"
+	"fmt"
 )
 
 // LCS takes two strings and compute their LCS(Longuest Subsequence Problem)
@@ -20,6 +21,7 @@ func LCS(str1, str2 string) int {
 	return lcsMatrix[len(runeStr1)][len(runeStr2)]
 }
 
+// Return computed lcs matrix
 func lcsProcess(runeStr1, runeStr2 []rune) [][]int {
 	// 2D Array that will contain str1 and str2 LCS
 	lcsMatrix := make([][]int, len(runeStr1)+1)
@@ -127,6 +129,49 @@ func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n in
 	}
 
 	return substrings
+}
+
+// LCSDiff will backtrack through the lcs matrix and return the diff between the two sequences
+func LCSDiff(str1, str2 string) ([]string, error) {
+	runeStr1 := []rune(str1)
+	runeStr2 := []rune(str2)
+
+	if len(runeStr1) == 0 || len(runeStr2) == 0 {
+		return nil, errors.New("Can't process LCS diff with empty string")
+	} else if equal(runeStr1, runeStr2) {
+		return []string{str1}, nil
+	}
+
+	diff := processLCSDiff(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2))
+	fmt.Printf("%v\n", diff)
+	return diff, nil
+}
+
+func processLCSDiff(str1 string, str2 string, lcsMatrix [][]int, m, n int) []string {
+	// Convert strings to rune array to handle no-ASCII characters
+	runeStr1 := []rune(str1)
+	runeStr2 := []rune(str2)
+
+	diff := make([]string, 2)
+
+	if m > 0 && n > 0 && runeStr1[m-1] == runeStr2[n-1] {
+		diff = processLCSDiff(str1, str2, lcsMatrix, m-1, n-1)
+		diff[0] = diff[0] + " " + string(str1[m-1])
+		diff[1] = diff[1] + "  "
+		return diff
+	} else if n > 0 && (m == 0 || lcsMatrix[m][n-1] > lcsMatrix[m-1][n]) {
+		diff = processLCSDiff(str1, str2, lcsMatrix, m, n-1)
+		diff[0] = diff[0] + " " + string(str2[n-1])
+		diff[1] = diff[1] + " +"
+		return diff
+	} else if m > 0 && (n == 0 || lcsMatrix[m][n-1] <= lcsMatrix[m-1][n]) {
+		diff = processLCSDiff(str1, str2, lcsMatrix, m-1, n)
+		diff[0] = diff[0] + " " + string(str1[m-1])
+		diff[1] = diff[1] + " -"
+		return diff
+	}
+
+	return diff
 }
 
 // LCSEditDistance determines the edit distance between two strings using LCS function
