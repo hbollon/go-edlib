@@ -56,14 +56,6 @@ func LCSBacktrack(str1, str2 string) (string, error) {
 		return str1, nil
 	}
 
-	lcsMatrix := make([][]int, len(runeStr1)+1)
-	for i := 0; i <= len(runeStr1); i++ {
-		lcsMatrix[i] = make([]int, len(runeStr2)+1)
-		for j := 0; j <= len(runeStr2); j++ {
-			lcsMatrix[i][j] = 0
-		}
-	}
-
 	return processLCSBacktrack(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2)), nil
 }
 
@@ -92,14 +84,6 @@ func LCSBacktrackAll(str1, str2 string) ([]string, error) {
 		return nil, errors.New("Can't process and backtrack any LCS with empty string")
 	} else if equal(runeStr1, runeStr2) {
 		return []string{str1}, nil
-	}
-
-	lcsMatrix := make([][]int, len(runeStr1)+1)
-	for i := 0; i <= len(runeStr1); i++ {
-		lcsMatrix[i] = make([]int, len(runeStr2)+1)
-		for j := 0; j <= len(runeStr2); j++ {
-			lcsMatrix[i][j] = 0
-		}
 	}
 
 	return processLCSBacktrackAll(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2)).toArray(), nil
