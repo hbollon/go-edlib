@@ -46,7 +46,7 @@ This library is 100% test covered 😁
 
 ## Features
 - [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance) ✨
-- [LCS](https://en.wikipedia.org/wiki/Levenshtein_distance) (Longest common subsequence) with associated edit distance ✨
+- [LCS](https://en.wikipedia.org/wiki/Levenshtein_distance) (Longest common subsequence) with edit distance, backtrack and diff functions ✨
 - [Hamming](https://en.wikipedia.org/wiki/Hamming_distance) ✨
 - [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance), with following variants :
     - OSA (Optimal string alignment) ✨
@@ -55,11 +55,6 @@ This library is 100% test covered 😁
 
 - Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨    
 - ASCII and Unicode compatibility ! 🥳
-
-### Coming soon :
-- LCS backtrack and diff functions
-- And many more ! 😁
-
 
 ## Installation
 Open bash into you project folder and run :
