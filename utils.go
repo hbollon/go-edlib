@@ -1,5 +1,8 @@
 package edlib
 
+// StringHashMap is HashMap substitue for string
+type StringHashMap map[string]struct{}
+
 // Return the smallest integer among the two in parameters
 func min(a int, b int) int {
 	if b < a {
@@ -27,4 +30,26 @@ func equal(a, b []rune) bool {
 		}
 	}
 	return true
+}
+
+/*
+	StringHashMap methods
+*/
+
+func (m StringHashMap) addAll(srcMap StringHashMap) {
+	for key := range srcMap {
+		m[key] = struct{}{}
+	}
+}
+
+// Convert and return an StringHashMap to string array
+func (m StringHashMap) toArray() []string {
+	var arr []string
+	var index int
+	for key := range m {
+		arr = append(arr, key)
+		index++
+	}
+
+	return arr
 }
