@@ -7,7 +7,7 @@ go:
   - "1.15.x"
 
 script:
-  - go test ./... -v -race -coverpkg=./... -coverprofile=coverage.out -covermode=atomic
+  - go test ./... -v -race -coverpkg=$(go list ./...) -coverprofile=coverage.out -covermode=atomic
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)

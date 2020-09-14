@@ -55,6 +55,7 @@ This library is 100% test covered 😁
 
 - Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨    
 - ASCII and Unicode compatibility ! 🥳
+- Many more to come !
 
 ## Installation
 Open bash into you project folder and run :
