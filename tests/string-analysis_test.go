@@ -1,10 +1,25 @@
 package edlib
 
 import (
+	"reflect"
 	"testing"
 
 	"github.com/hbollon/go-edlib"
 )
+
+var strList []string
+
+func init() {
+	strList = []string{
+		"test",
+		"tester",
+		"tests",
+		"testers",
+		"testing",
+		"tsting",
+		"sting",
+	}
+}
 
 func TestStringsSimilarity(t *testing.T) {
 	type args struct {
@@ -114,6 +129,99 @@ func TestStringsSimilarity(t *testing.T) {
 			}
 			if got != tt.want {
 				t.Errorf("StringsSimilarity() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFuzzySearch(t *testing.T) {
+	type args struct {
+		str     string
+		strList []string
+		algo    edlib.AlgorithMethod
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{"FuzzySearch 'testing'", args{"testnig", strList, edlib.Levenshtein}, "testing"},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := edlib.FuzzySearch(tt.args.str, tt.args.strList, tt.args.algo); got != tt.want {
+				t.Errorf("FuzzySearch() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFuzzySearchThreshold(t *testing.T) {
+	type args struct {
+		str     string
+		strList []string
+		minSim  float32
+		algo    edlib.AlgorithMethod
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{"FuzzySearch 'testing'", args{"testnig", strList, 0.7, edlib.Levenshtein}, "testing"},
+		{"FuzzySearch 'testing'", args{"hello", strList, 0.7, edlib.Levenshtein}, ""},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := edlib.FuzzySearchThreshold(tt.args.str, tt.args.strList, tt.args.minSim, tt.args.algo); got != tt.want {
+				t.Errorf("FuzzySearchThreshold() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFuzzySearchSet(t *testing.T) {
+	type args struct {
+		str      string
+		strList  []string
+		quantity int
+		algo     edlib.AlgorithMethod
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{"FuzzySearch 'testing'", args{"testnig", strList, 3, edlib.Levenshtein}, []string{"testing", "test", "tester"}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := edlib.FuzzySearchSet(tt.args.str, tt.args.strList, tt.args.quantity, tt.args.algo); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("FuzzySearchSet() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestFuzzySearchSetThreshold(t *testing.T) {
+	type args struct {
+		str      string
+		strList  []string
+		quantity int
+		minSim   float32
+		algo     edlib.AlgorithMethod
+	}
+	tests := []struct {
+		name string
+		args args
+		want []string
+	}{
+		{"FuzzySearch 'testing'", args{"testnig", strList, 3, 0.7, edlib.Levenshtein}, []string{"testing", "", ""}},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := edlib.FuzzySearchSetThreshold(tt.args.str, tt.args.strList, tt.args.quantity, tt.args.minSim, tt.args.algo); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("FuzzySearchSetThreshold() = %v, want %v", got, tt.want)
 			}
 		})
 	}
