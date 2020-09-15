@@ -1,6 +1,9 @@
 package edlib
 
-import "errors"
+import (
+	"errors"
+	"log"
+)
 
 // AlgorithMethod is an Integer type used to identify edit distance algorithms
 type AlgorithMethod uint8
@@ -49,4 +52,47 @@ func matchingIndex(str1 string, str2 string, distance int) float32 {
 		return float32(len(str1)-distance) / float32(len(str1))
 	}
 	return float32(len(str2)-distance) / float32(len(str2))
+}
+
+// FuzzySearch realize an approximate search on a string list and return the closest one compared
+// to the string input
+func FuzzySearch(str string, strList []string, algo AlgorithMethod) string {
+	var higherMatchPercent float32
+	var tmpStr string
+	for _, strToCmp := range strList {
+		sim, err := StringsSimilarity(str, strToCmp, algo)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if sim == 1.0 {
+			return strToCmp
+		} else if sim > higherMatchPercent {
+			higherMatchPercent = sim
+			tmpStr = strToCmp
+		}
+	}
+
+	return tmpStr
+}
+
+// FuzzySearchThreshold realize an approximate search on a string list and return the closest one compared
+// to the string input. Take an similarity threshold in parameter.
+func FuzzySearchThreshold(str string, strList []string, minSim float32, algo AlgorithMethod) string {
+	var higherMatchPercent float32
+	var tmpStr string
+	for _, strToCmp := range strList {
+		sim, err := StringsSimilarity(str, strToCmp, algo)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if sim == 1.0 {
+			return strToCmp
+		} else if sim > higherMatchPercent && sim >= minSim {
+			higherMatchPercent = sim
+			tmpStr = strToCmp
+		}
+	}
+	return tmpStr
 }
