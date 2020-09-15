@@ -6,10 +6,10 @@ import (
 
 type pair struct {
 	Key   string
-	Value int
+	Value float32
 }
 
-// OrderedMap is a map like type with string keys and int values.
+// OrderedMap is a slice of pairs type with string keys and float values.
 // It implement sorting methods by values.
 type OrderedMap []pair
 

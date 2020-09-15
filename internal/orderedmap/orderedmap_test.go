@@ -9,11 +9,11 @@ var testOrderedMap OrderedMap
 
 func init() {
 	testOrderedMap = OrderedMap{
-		{"test1", 5},
-		{"test2", 2},
-		{"test3", 4},
-		{"test4", 3},
-		{"test5", 6},
+		{"test1", 5.0},
+		{"test2", 2.0},
+		{"test3", 4.0},
+		{"test4", 3.0},
+		{"test5", 6.0},
 	}
 }
 
