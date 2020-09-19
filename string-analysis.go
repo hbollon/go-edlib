@@ -2,8 +2,6 @@ package edlib
 
 import (
 	"errors"
-	"fmt"
-	"log"
 
 	"github.com/hbollon/go-edlib/internal/orderedmap"
 )
@@ -59,58 +57,56 @@ func matchingIndex(str1 string, str2 string, distance int) float32 {
 
 // FuzzySearch realize an approximate search on a string list and return the closest one compared
 // to the string input
-func FuzzySearch(str string, strList []string, algo AlgorithMethod) string {
+func FuzzySearch(str string, strList []string, algo AlgorithMethod) (string, error) {
 	var higherMatchPercent float32
 	var tmpStr string
 	for _, strToCmp := range strList {
 		sim, err := StringsSimilarity(str, strToCmp, algo)
 		if err != nil {
-			log.Fatal(err)
+			return "", err
 		}
 
 		if sim == 1.0 {
-			return strToCmp
+			return strToCmp, nil
 		} else if sim > higherMatchPercent {
 			higherMatchPercent = sim
 			tmpStr = strToCmp
 		}
 	}
 
-	return tmpStr
+	return tmpStr, nil
 }
 
 // FuzzySearchThreshold realize an approximate search on a string list and return the closest one compared
 // to the string input. Takes a similarity threshold in parameter.
-func FuzzySearchThreshold(str string, strList []string, minSim float32, algo AlgorithMethod) string {
+func FuzzySearchThreshold(str string, strList []string, minSim float32, algo AlgorithMethod) (string, error) {
 	var higherMatchPercent float32
 	var tmpStr string
 	for _, strToCmp := range strList {
 		sim, err := StringsSimilarity(str, strToCmp, algo)
 		if err != nil {
-			log.Fatal(err)
+			return "", err
 		}
 
 		if sim == 1.0 {
-			return strToCmp
+			return strToCmp, nil
 		} else if sim > higherMatchPercent && sim >= minSim {
 			higherMatchPercent = sim
 			tmpStr = strToCmp
 		}
 	}
-	return tmpStr
+	return tmpStr, nil
 }
 
 // FuzzySearchSet realize an approximate search on a string list and return a set composed with x strings compared
 // to the string input sorted by similarity with the base string.
 // Takes the a quantity parameter to define the number of output strings desired (For example 3 in the case of the Google Keyboard word suggestion).
-func FuzzySearchSet(str string, strList []string, quantity int, algo AlgorithMethod) []string {
+func FuzzySearchSet(str string, strList []string, quantity int, algo AlgorithMethod) ([]string, error) {
 	sortedMap := make(orderedmap.OrderedMap, quantity)
 	for _, strToCmp := range strList {
 		sim, err := StringsSimilarity(str, strToCmp, algo)
 		if err != nil {
-			log.Fatal(err)
-		} else {
-			fmt.Printf("Sim %s/%s : %f\n", str, strToCmp, sim)
+			return nil, err
 		}
 
 		if sim > sortedMap[sortedMap.Len()-1].Value {
@@ -120,19 +116,19 @@ func FuzzySearchSet(str string, strList []string, quantity int, algo AlgorithMet
 		}
 	}
 
-	return sortedMap.ToArray()
+	return sortedMap.ToArray(), nil
 }
 
 // FuzzySearchSetThreshold realize an approximate search on a string list and return a set composed with x strings compared
 // to the string input sorted by similarity with the base string. Take a similarity threshold in parameter.
 // Takes the a quantity parameter to define the number of output strings desired (For example 3 in the case of the Google Keyboard word suggestion).
 // Takes also a threshold parameter for similarity with base string.
-func FuzzySearchSetThreshold(str string, strList []string, quantity int, minSim float32, algo AlgorithMethod) []string {
+func FuzzySearchSetThreshold(str string, strList []string, quantity int, minSim float32, algo AlgorithMethod) ([]string, error) {
 	sortedMap := make(orderedmap.OrderedMap, quantity)
 	for _, strToCmp := range strList {
 		sim, err := StringsSimilarity(str, strToCmp, algo)
 		if err != nil {
-			log.Fatal(err)
+			return nil, err
 		}
 
 		if sim >= minSim && sim > sortedMap[sortedMap.Len()-1].Value {
@@ -142,5 +138,5 @@ func FuzzySearchSetThreshold(str string, strList []string, quantity int, minSim 
 		}
 	}
 
-	return sortedMap.ToArray()
+	return sortedMap.ToArray(), nil
 }

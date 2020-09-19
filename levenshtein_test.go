@@ -2,8 +2,6 @@ package edlib
 
 import (
 	"testing"
-
-	"github.com/hbollon/go-edlib"
 )
 
 func Test_levenshteinDistance(t *testing.T) {
@@ -31,7 +29,7 @@ func Test_levenshteinDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := edlib.LevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := LevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("levenshteinDistance() = %v, want %v", got, tt.want)
 			}
 		})
@@ -64,7 +62,7 @@ func TestOSADamerauLevenshteinDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := edlib.OSADamerauLevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := OSADamerauLevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("OSADamerauLevenshteinDistance() = %v, want %v", got, tt.want)
 			}
 		})
@@ -97,7 +95,7 @@ func TestDamerauLevenshteinDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := edlib.DamerauLevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := DamerauLevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("DamerauLevenshteinDistance() = %v, want %v", got, tt.want)
 			}
 		})

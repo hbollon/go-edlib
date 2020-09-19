@@ -2,8 +2,6 @@ package edlib
 
 import (
 	"testing"
-
-	"github.com/hbollon/go-edlib"
 )
 
 func TestJaroSimilarity(t *testing.T) {
@@ -27,7 +25,7 @@ func TestJaroSimilarity(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := edlib.JaroSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := JaroSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("JaroSimilarity() = %v, want %v", got, tt.want)
 			}
 		})
@@ -55,7 +53,7 @@ func TestJaroWinklerSimilarity(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := edlib.JaroWinklerSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := JaroWinklerSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("JaroWinklerSimilarity() = %v, want %v", got, tt.want)
 			}
 		})
