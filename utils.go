@@ -1,6 +1,6 @@
 package edlib
 
-// StringHashMap is HashMap substitue for string
+// StringHashMap is HashMap substitute for string
 type StringHashMap map[string]struct{}
 
 // Return the smallest integer among the two in parameters

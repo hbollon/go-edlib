@@ -16,6 +16,9 @@
   <a href="https://godoc.org/github.com/hbollon/go-edlib" target="_blank">
     <img alt="Documentation link" src="https://godoc.org/github.com/hbollon/go-edlib?status.svg" />
   </a>
+  <a href="https://pkg.go.dev/github.com/hbollon/go-edlib" target="_blank">
+    <img src="https://pkg.go.dev/badge/github.com/hbollon/go-edlib" alt="PkgGoDev">
+  </a>
 </p>
 
 > Golang string comparison and edit distance algorithms library featuring : Levenshtein, LCS, Hamming, Damerau levenshtein (OSA and Adjacent transpositions algorithms), Jaro-Winkler, etc...
@@ -41,7 +44,7 @@
 
 ## Introduction
 Golang open-source library which includes most (and soon all) edit-distance and string comparision algorithms with some extra! <br>
-Designed to be fully compatible with Unicode and ASCII characters!<br>
+Designed to be fully compatible with Unicode characters!<br>
 This library is 100% test covered 😁
 
 ## Features
@@ -53,8 +56,9 @@ This library is 100% test covered 😁
     - Adjacent transpositions ✨
 - [Jaro & Jaro-Winkler](https://fr.wikipedia.org/wiki/Distance_de_Jaro-Winkler) similarity algorithms ✨
 
-- Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨    
-- ASCII and Unicode compatibility ! 🥳
+- Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨
+- Fuzzy search functions based on edit distance with unique or multiples strings output ✨
+- Unicode compatibility ! 🥳
 - Many more to come !
 
 ## Installation
@@ -82,6 +86,7 @@ go test ./... -coverpkg=./... # Add desired parameters to this command if you wa
 
 * Github: [@hbollon](https://github.com/hbollon)
 * LinkedIn: [@Hugo Bollon](https://www.linkedin.com/in/hugo-bollon-68a2381a4/)
+* Portfolio: [hugobollon.me](https://www.hugobollon.me)
 
 ## 🤝 Contributing
 
