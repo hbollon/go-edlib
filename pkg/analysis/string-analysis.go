@@ -14,13 +14,20 @@ import (
 type AlgorithMethod uint8
 
 const (
-	Levenshtein           AlgorithMethod = iota
-	DamerauLevenshtein    AlgorithMethod = iota
+	// Levenshtein algo identifier
+	Levenshtein AlgorithMethod = iota
+	// DamerauLevenshtein algo identifier
+	DamerauLevenshtein AlgorithMethod = iota
+	// OSADamerauLevenshtein algo identifier
 	OSADamerauLevenshtein AlgorithMethod = iota
-	Lcs                   AlgorithMethod = iota
-	Hamming               AlgorithMethod = iota
-	Jaro                  AlgorithMethod = iota
-	JaroWinkler           AlgorithMethod = iota
+	// Lcs algo identifier
+	Lcs AlgorithMethod = iota
+	// Hamming algo identifier
+	Hamming AlgorithMethod = iota
+	// Jaro algo identifier
+	Jaro AlgorithMethod = iota
+	// JaroWinkler algo identifier
+	JaroWinkler AlgorithMethod = iota
 )
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
