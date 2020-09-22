@@ -1,14 +1,14 @@
-package lcs
+package edlib
 
 import (
 	"errors"
 	"fmt"
 
-	"github.com/hbollon/go-edlib/pkg/utils"
+	"github.com/hbollon/go-edlib/internal/utils"
 )
 
-// ComputeLCS takes two strings and compute their LCS(Longuest Subsequence Problem)
-func ComputeLCS(str1, str2 string) int {
+// LCS takes two strings and compute their LCS(Longuest Subsequence Problem)
+func LCS(str1, str2 string) int {
 	// Convert strings to rune array to handle no-ASCII characters
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
@@ -47,8 +47,8 @@ func lcsProcess(runeStr1, runeStr2 []rune) [][]int {
 	return lcsMatrix
 }
 
-// Backtrack returns all choices taken during LCS process
-func Backtrack(str1, str2 string) (string, error) {
+// LCSBacktrack returns all choices taken during LCS process
+func LCSBacktrack(str1, str2 string) (string, error) {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
@@ -77,8 +77,8 @@ func processLCSBacktrack(str1 string, str2 string, lcsMatrix [][]int, m, n int) 
 	return processLCSBacktrack(str1, str2, lcsMatrix, m-1, n)
 }
 
-// BacktrackAll returns an array containing all common substrings between str1 and str2
-func BacktrackAll(str1, str2 string) ([]string, error) {
+// LCSBacktrackAll returns an array containing all common substrings between str1 and str2
+func LCSBacktrackAll(str1, str2 string) ([]string, error) {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
@@ -117,8 +117,8 @@ func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n in
 	return substrings
 }
 
-// Diff will backtrack through the lcs matrix and return the diff between the two sequences
-func Diff(str1, str2 string) ([]string, error) {
+// LCSDiff will backtrack through the lcs matrix and return the diff between the two sequences
+func LCSDiff(str1, str2 string) ([]string, error) {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
@@ -160,9 +160,9 @@ func processLCSDiff(str1 string, str2 string, lcsMatrix [][]int, m, n int) []str
 	return diff
 }
 
-// Distance determines the edit distance between two strings using LCS function
+// LCSEditDistance determines the edit distance between two strings using LCS function
 // (allow only insert and delete operations)
-func Distance(str1, str2 string) int {
+func LCSEditDistance(str1, str2 string) int {
 	if len(str1) == 0 {
 		return len(str2)
 	} else if len(str2) == 0 {
@@ -171,6 +171,6 @@ func Distance(str1, str2 string) int {
 		return 0
 	}
 
-	lcs := ComputeLCS(str1, str2)
+	lcs := LCS(str1, str2)
 	return (len(str1) - lcs) + (len(str2) - lcs)
 }

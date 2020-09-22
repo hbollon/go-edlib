@@ -1,11 +1,11 @@
-package levenshtein
+package edlib
 
-import "github.com/hbollon/go-edlib/pkg/utils"
+import "github.com/hbollon/go-edlib/internal/utils"
 
-// Distance calculate the distance between two string
+// LevenshteinDistance calculate the distance between two string
 // This algorithm allow insertions, deletions and substitutions to change one string to the second
 // Compatible with non-ASCII characters
-func Distance(str1, str2 string) int {
+func LevenshteinDistance(str1, str2 string) int {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)

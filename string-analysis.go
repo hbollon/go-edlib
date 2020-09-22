@@ -1,13 +1,9 @@
-package analysis
+package edlib
 
 import (
 	"errors"
 
 	"github.com/hbollon/go-edlib/internal/orderedmap"
-	"github.com/hbollon/go-edlib/pkg/hamming"
-	"github.com/hbollon/go-edlib/pkg/jaro"
-	"github.com/hbollon/go-edlib/pkg/lcs"
-	"github.com/hbollon/go-edlib/pkg/levenshtein"
 )
 
 // AlgorithMethod is an Integer type used to identify edit distance algorithms
@@ -35,23 +31,23 @@ const (
 func StringsSimilarity(str1 string, str2 string, algo AlgorithMethod) (float32, error) {
 	switch algo {
 	case Levenshtein:
-		return matchingIndex(str1, str2, levenshtein.Distance(str1, str2)), nil
+		return matchingIndex(str1, str2, LevenshteinDistance(str1, str2)), nil
 	case DamerauLevenshtein:
-		return matchingIndex(str1, str2, levenshtein.DamerauLevenshteinDistance(str1, str2)), nil
+		return matchingIndex(str1, str2, DamerauLevenshteinDistance(str1, str2)), nil
 	case OSADamerauLevenshtein:
-		return matchingIndex(str1, str2, levenshtein.OSADamerauLevenshteinDistance(str1, str2)), nil
+		return matchingIndex(str1, str2, OSADamerauLevenshteinDistance(str1, str2)), nil
 	case Lcs:
-		return matchingIndex(str1, str2, lcs.Distance(str1, str2)), nil
+		return matchingIndex(str1, str2, LCSEditDistance(str1, str2)), nil
 	case Hamming:
-		distance, err := hamming.Distance(str1, str2)
+		distance, err := HammingDistance(str1, str2)
 		if err == nil {
 			return matchingIndex(str1, str2, distance), nil
 		}
 		return 0.0, err
 	case Jaro:
-		return jaro.Similarity(str1, str2), nil
+		return JaroSimilarity(str1, str2), nil
 	case JaroWinkler:
-		return jaro.WinklerSimilarity(str1, str2), nil
+		return JaroWinklerSimilarity(str1, str2), nil
 	default:
 		return 0.0, errors.New("Illegal argument for algorithm method")
 	}

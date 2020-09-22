@@ -1,14 +1,14 @@
-package hamming
+package edlib
 
 import (
 	"errors"
 
-	"github.com/hbollon/go-edlib/pkg/utils"
+	"github.com/hbollon/go-edlib/internal/utils"
 )
 
-// Distance calculate the edit distance between two given strings using only substitutions
+// HammingDistance calculate the edit distance between two given strings using only substitutions
 // Return edit distance integer and an error
-func Distance(str1, str2 string) (int, error) {
+func HammingDistance(str1, str2 string) (int, error) {
 	// Convert strings to rune array to handle no-ASCII characters
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)

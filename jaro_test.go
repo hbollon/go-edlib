@@ -1,4 +1,4 @@
-package jaro
+package edlib
 
 import (
 	"testing"
@@ -25,7 +25,7 @@ func TestJaroSimilarity(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Similarity(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := JaroSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("JaroSimilarity() = %v, want %v", got, tt.want)
 			}
 		})
@@ -53,7 +53,7 @@ func TestJaroWinklerSimilarity(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := WinklerSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := JaroWinklerSimilarity(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("JaroWinklerSimilarity() = %v, want %v", got, tt.want)
 			}
 		})

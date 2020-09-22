@@ -1,4 +1,4 @@
-package levenshtein
+package edlib
 
 import (
 	"testing"
@@ -29,7 +29,7 @@ func Test_levenshteinDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := Distance(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := LevenshteinDistance(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("levenshteinDistance() = %v, want %v", got, tt.want)
 			}
 		})

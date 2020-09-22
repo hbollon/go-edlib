@@ -1,10 +1,10 @@
-package jaro
+package edlib
 
-import "github.com/hbollon/go-edlib/pkg/utils"
+import "github.com/hbollon/go-edlib/internal/utils"
 
-// Similarity return a similarity index (between 0 and 1)
+// JaroSimilarity return a similarity index (between 0 and 1)
 // It use Jaro distance algorithm and allow only transposition operation
-func Similarity(str1, str2 string) float32 {
+func JaroSimilarity(str1, str2 string) float32 {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
@@ -61,11 +61,11 @@ func Similarity(str1, str2 string) float32 {
 		(float32(match)-t)/float32(match)) / 3.0
 }
 
-// WinklerSimilarity return a similarity index (between 0 and 1)
+// JaroWinklerSimilarity return a similarity index (between 0 and 1)
 // Use Jaro similarity and after look for a common prefix (length <= 4)
-func WinklerSimilarity(str1, str2 string) float32 {
+func JaroWinklerSimilarity(str1, str2 string) float32 {
 	// Get Jaro similarity index between str1 and str2
-	jaroSim := Similarity(str1, str2)
+	jaroSim := JaroSimilarity(str1, str2)
 
 	if jaroSim != 0.0 && jaroSim != 1.0 {
 		// Convert string parameters to rune arrays to be compatible with non-ASCII
