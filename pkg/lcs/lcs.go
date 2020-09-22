@@ -1,19 +1,21 @@
-package edlib
+package lcs
 
 import (
 	"errors"
 	"fmt"
+
+	"github.com/hbollon/go-edlib/pkg/utils"
 )
 
-// LCS takes two strings and compute their LCS(Longuest Subsequence Problem)
-func LCS(str1, str2 string) int {
+// ComputeLCS takes two strings and compute their LCS(Longuest Subsequence Problem)
+func ComputeLCS(str1, str2 string) int {
 	// Convert strings to rune array to handle no-ASCII characters
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
 		return 0
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return len(runeStr1)
 	}
 
@@ -37,7 +39,7 @@ func lcsProcess(runeStr1, runeStr2 []rune) [][]int {
 			if runeStr1[i-1] == runeStr2[j-1] {
 				lcsMatrix[i][j] = lcsMatrix[i-1][j-1] + 1
 			} else {
-				lcsMatrix[i][j] = max(lcsMatrix[i][j-1], lcsMatrix[i-1][j])
+				lcsMatrix[i][j] = utils.Max(lcsMatrix[i][j-1], lcsMatrix[i-1][j])
 			}
 		}
 	}
@@ -45,14 +47,14 @@ func lcsProcess(runeStr1, runeStr2 []rune) [][]int {
 	return lcsMatrix
 }
 
-// LCSBacktrack returns all choices taken during LCS process
-func LCSBacktrack(str1, str2 string) (string, error) {
+// Backtrack returns all choices taken during LCS process
+func Backtrack(str1, str2 string) (string, error) {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
 		return "", errors.New("Can't process and backtrack any LCS with empty string")
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return str1, nil
 	}
 
@@ -75,27 +77,27 @@ func processLCSBacktrack(str1 string, str2 string, lcsMatrix [][]int, m, n int) 
 	return processLCSBacktrack(str1, str2, lcsMatrix, m-1, n)
 }
 
-// LCSBacktrackAll returns an array containing all common substrings between str1 and str2
-func LCSBacktrackAll(str1, str2 string) ([]string, error) {
+// BacktrackAll returns an array containing all common substrings between str1 and str2
+func BacktrackAll(str1, str2 string) ([]string, error) {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
 		return nil, errors.New("Can't process and backtrack any LCS with empty string")
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return []string{str1}, nil
 	}
 
-	return processLCSBacktrackAll(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2)).toArray(), nil
+	return processLCSBacktrackAll(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2)).ToArray(), nil
 }
 
-func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n int) StringHashMap {
+func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n int) utils.StringHashMap {
 	// Convert strings to rune array to handle no-ASCII characters
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
 	// Map containing all commons substrings (Hash set builded from map)
-	substrings := make(StringHashMap)
+	substrings := make(utils.StringHashMap)
 
 	if m == 0 || n == 0 {
 		substrings[""] = struct{}{}
@@ -105,24 +107,24 @@ func processLCSBacktrackAll(str1 string, str2 string, lcsMatrix [][]int, m, n in
 		}
 	} else {
 		if lcsMatrix[m-1][n] >= lcsMatrix[m][n-1] {
-			substrings.addAll(processLCSBacktrackAll(str1, str2, lcsMatrix, m-1, n))
+			substrings.AddAll(processLCSBacktrackAll(str1, str2, lcsMatrix, m-1, n))
 		}
 		if lcsMatrix[m][n-1] >= lcsMatrix[m-1][n] {
-			substrings.addAll(processLCSBacktrackAll(str1, str2, lcsMatrix, m, n-1))
+			substrings.AddAll(processLCSBacktrackAll(str1, str2, lcsMatrix, m, n-1))
 		}
 	}
 
 	return substrings
 }
 
-// LCSDiff will backtrack through the lcs matrix and return the diff between the two sequences
-func LCSDiff(str1, str2 string) ([]string, error) {
+// Diff will backtrack through the lcs matrix and return the diff between the two sequences
+func Diff(str1, str2 string) ([]string, error) {
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
 		return nil, errors.New("Can't process LCS diff with empty string")
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return []string{str1}, nil
 	}
 
@@ -158,9 +160,9 @@ func processLCSDiff(str1 string, str2 string, lcsMatrix [][]int, m, n int) []str
 	return diff
 }
 
-// LCSEditDistance determines the edit distance between two strings using LCS function
+// Distance determines the edit distance between two strings using LCS function
 // (allow only insert and delete operations)
-func LCSEditDistance(str1, str2 string) int {
+func Distance(str1, str2 string) int {
 	if len(str1) == 0 {
 		return len(str2)
 	} else if len(str2) == 0 {
@@ -169,6 +171,6 @@ func LCSEditDistance(str1, str2 string) int {
 		return 0
 	}
 
-	lcs := LCS(str1, str2)
+	lcs := ComputeLCS(str1, str2)
 	return (len(str1) - lcs) + (len(str2) - lcs)
 }

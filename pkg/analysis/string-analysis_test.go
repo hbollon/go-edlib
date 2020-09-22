@@ -1,4 +1,4 @@
-package edlib
+package analysis
 
 import (
 	"reflect"

@@ -1,9 +1,11 @@
-package edlib
+package levenshtein
 
-// LevenshteinDistance calculate the distance between two string
+import "github.com/hbollon/go-edlib/pkg/utils"
+
+// Distance calculate the distance between two string
 // This algorithm allow insertions, deletions and substitutions to change one string to the second
 // Compatible with non-ASCII characters
-func LevenshteinDistance(str1, str2 string) int {
+func Distance(str1, str2 string) int {
 	// Convert string parameters to rune arrays to be compatible with non-ASCII
 	runeStr1 := []rune(str1)
 	runeStr2 := []rune(str2)
@@ -15,7 +17,7 @@ func LevenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return 0
 	}
 
@@ -33,8 +35,8 @@ func LevenshteinDistance(str1, str2 string) int {
 			if runeStr1[y-1] != runeStr2[x-1] {
 				i = 1
 			}
-			column[y] = min(
-				min(column[y]+1, // insert
+			column[y] = utils.Min(
+				utils.Min(column[y]+1, // insert
 					column[y-1]+1), // delete
 				lastkey+i) // substitution
 			lastkey = oldkey
@@ -61,7 +63,7 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return 0
 	}
 
@@ -90,9 +92,9 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 				count = 1
 			}
 
-			matrix[i][j] = min(min(matrix[i-1][j]+1, matrix[i][j-1]+1), matrix[i-1][j-1]+count) // insertion, deletion, substitution
+			matrix[i][j] = utils.Min(utils.Min(matrix[i-1][j]+1, matrix[i][j-1]+1), matrix[i-1][j-1]+count) // insertion, deletion, substitution
 			if i > 1 && j > 1 && runeStr1[i-1] == runeStr2[j-2] && runeStr1[i-2] == runeStr2[j-1] {
-				matrix[i][j] = min(matrix[i][j], matrix[i-2][j-2]+1) // translation
+				matrix[i][j] = utils.Min(matrix[i][j], matrix[i-2][j-2]+1) // translation
 			}
 		}
 	}
@@ -115,7 +117,7 @@ func DamerauLevenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if equal(runeStr1, runeStr2) {
+	} else if utils.Equal(runeStr1, runeStr2) {
 		return 0
 	}
 
@@ -165,11 +167,11 @@ func DamerauLevenshteinDistance(str1, str2 string) int {
 				cost = 1
 			}
 
-			matrix[i+1][j+1] = min(
-				min(
+			matrix[i+1][j+1] = utils.Min(
+				utils.Min(
 					matrix[i+1][j]+1,  // Addition
 					matrix[i][j+1]+1), // Deletion
-				min(
+				utils.Min(
 					matrix[i][j]+cost, // Substitution
 					matrix[i1][j1]+(i-i1-1)+1+(j-j1-1))) // Transposition
 		}

@@ -1,4 +1,4 @@
-package edlib
+package lcs
 
 import (
 	"reflect"
@@ -26,7 +26,7 @@ func TestLCS(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LCS(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := ComputeLCS(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("LCS() = %v, want %v", got, tt.want)
 			}
 		})
@@ -54,7 +54,7 @@ func TestLCSBacktrack(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := LCSBacktrack(tt.args.str1, tt.args.str2)
+			got, err := Backtrack(tt.args.str1, tt.args.str2)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("LCSBacktrack() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -89,7 +89,7 @@ func TestLCSBacktrackAll(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := LCSBacktrackAll(tt.args.str1, tt.args.str2)
+			got, err := BacktrackAll(tt.args.str1, tt.args.str2)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("LCSBacktrackAll() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -121,7 +121,7 @@ func TestLCSDiff(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := LCSDiff(tt.args.str1, tt.args.str2)
+			got, err := Diff(tt.args.str1, tt.args.str2)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("LCSDiff() error = %v, wantErr %v", err, tt.wantErr)
 				return
@@ -157,7 +157,7 @@ func TestLCSEditDistance(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := LCSEditDistance(tt.args.str1, tt.args.str2); got != tt.want {
+			if got := Distance(tt.args.str1, tt.args.str2); got != tt.want {
 				t.Errorf("LCSEditDistance() = %v, want %v", got, tt.want)
 			}
 		})
