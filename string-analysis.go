@@ -6,29 +6,29 @@ import (
 	"github.com/hbollon/go-edlib/internal/orderedmap"
 )
 
-// AlgorithMethod is an Integer type used to identify edit distance algorithms
-type AlgorithMethod uint8
+// Algorithm is an Integer type used to identify edit distance algorithms
+type Algorithm uint8
 
 const (
 	// Levenshtein algo identifier
-	Levenshtein AlgorithMethod = iota
+	Levenshtein Algorithm = iota
 	// DamerauLevenshtein algo identifier
-	DamerauLevenshtein AlgorithMethod = iota
+	DamerauLevenshtein Algorithm = iota
 	// OSADamerauLevenshtein algo identifier
-	OSADamerauLevenshtein AlgorithMethod = iota
+	OSADamerauLevenshtein Algorithm = iota
 	// Lcs algo identifier
-	Lcs AlgorithMethod = iota
+	Lcs Algorithm = iota
 	// Hamming algo identifier
-	Hamming AlgorithMethod = iota
+	Hamming Algorithm = iota
 	// Jaro algo identifier
-	Jaro AlgorithMethod = iota
+	Jaro Algorithm = iota
 	// JaroWinkler algo identifier
-	JaroWinkler AlgorithMethod = iota
+	JaroWinkler Algorithm = iota
 )
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
 // Use defined AlgorithmMethod type.
-func StringsSimilarity(str1 string, str2 string, algo AlgorithMethod) (float32, error) {
+func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error) {
 	switch algo {
 	case Levenshtein:
 		return matchingIndex(str1, str2, LevenshteinDistance(str1, str2)), nil
@@ -64,7 +64,7 @@ func matchingIndex(str1 string, str2 string, distance int) float32 {
 
 // FuzzySearch realize an approximate search on a string list and return the closest one compared
 // to the string input
-func FuzzySearch(str string, strList []string, algo AlgorithMethod) (string, error) {
+func FuzzySearch(str string, strList []string, algo Algorithm) (string, error) {
 	var higherMatchPercent float32
 	var tmpStr string
 	for _, strToCmp := range strList {
@@ -86,7 +86,7 @@ func FuzzySearch(str string, strList []string, algo AlgorithMethod) (string, err
 
 // FuzzySearchThreshold realize an approximate search on a string list and return the closest one compared
 // to the string input. Takes a similarity threshold in parameter.
-func FuzzySearchThreshold(str string, strList []string, minSim float32, algo AlgorithMethod) (string, error) {
+func FuzzySearchThreshold(str string, strList []string, minSim float32, algo Algorithm) (string, error) {
 	var higherMatchPercent float32
 	var tmpStr string
 	for _, strToCmp := range strList {
@@ -108,7 +108,7 @@ func FuzzySearchThreshold(str string, strList []string, minSim float32, algo Alg
 // FuzzySearchSet realize an approximate search on a string list and return a set composed with x strings compared
 // to the string input sorted by similarity with the base string.
 // Takes the a quantity parameter to define the number of output strings desired (For example 3 in the case of the Google Keyboard word suggestion).
-func FuzzySearchSet(str string, strList []string, quantity int, algo AlgorithMethod) ([]string, error) {
+func FuzzySearchSet(str string, strList []string, quantity int, algo Algorithm) ([]string, error) {
 	sortedMap := make(orderedmap.OrderedMap, quantity)
 	for _, strToCmp := range strList {
 		sim, err := StringsSimilarity(str, strToCmp, algo)
@@ -130,7 +130,7 @@ func FuzzySearchSet(str string, strList []string, quantity int, algo AlgorithMet
 // to the string input sorted by similarity with the base string. Take a similarity threshold in parameter.
 // Takes the a quantity parameter to define the number of output strings desired (For example 3 in the case of the Google Keyboard word suggestion).
 // Takes also a threshold parameter for similarity with base string.
-func FuzzySearchSetThreshold(str string, strList []string, quantity int, minSim float32, algo AlgorithMethod) ([]string, error) {
+func FuzzySearchSetThreshold(str string, strList []string, quantity int, minSim float32, algo Algorithm) ([]string, error) {
 	sortedMap := make(orderedmap.OrderedMap, quantity)
 	for _, strToCmp := range strList {
 		sim, err := StringsSimilarity(str, strToCmp, algo)
