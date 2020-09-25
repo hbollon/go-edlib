@@ -27,7 +27,7 @@ const (
 )
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
-// Use defined AlgorithmMethod type.
+// Use defined Algorithm type.
 func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error) {
 	switch algo {
 	case Levenshtein:

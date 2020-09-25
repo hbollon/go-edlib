@@ -23,7 +23,7 @@ func TestStringsSimilarity(t *testing.T) {
 	type args struct {
 		str1 string
 		str2 string
-		algo AlgorithMethod
+		algo Algorithm
 	}
 	tests := []struct {
 		name    string
@@ -136,7 +136,7 @@ func TestFuzzySearch(t *testing.T) {
 	type args struct {
 		str     string
 		strList []string
-		algo    AlgorithMethod
+		algo    Algorithm
 	}
 	tests := []struct {
 		name    string
@@ -167,7 +167,7 @@ func TestFuzzySearchThreshold(t *testing.T) {
 		str     string
 		strList []string
 		minSim  float32
-		algo    AlgorithMethod
+		algo    Algorithm
 	}
 	tests := []struct {
 		name    string
@@ -199,7 +199,7 @@ func TestFuzzySearchSet(t *testing.T) {
 		str      string
 		strList  []string
 		quantity int
-		algo     AlgorithMethod
+		algo     Algorithm
 	}
 	tests := []struct {
 		name    string
@@ -230,7 +230,7 @@ func TestFuzzySearchSetThreshold(t *testing.T) {
 		strList  []string
 		quantity int
 		minSim   float32
-		algo     AlgorithMethod
+		algo     Algorithm
 	}
 	tests := []struct {
 		name    string
