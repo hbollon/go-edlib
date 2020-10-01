@@ -5,6 +5,21 @@ import (
 	"testing"
 )
 
+var testArr1, testArr2 []string
+
+func init() {
+	testArr1 = []string{
+		"a",
+		"b",
+		"d",
+	}
+
+	testArr2 = []string{
+		"a",
+		"e",
+	}
+}
+
 func TestCosineSimilarity(t *testing.T) {
 	type args struct {
 		str1 string
@@ -38,7 +53,7 @@ func Test_union(t *testing.T) {
 		args args
 		want [][]rune
 	}{
-		// TODO: Add test cases.
+		{"Union function test", args{testArr1, testArr2}, [][]rune{{97}, {98}, {100}, {101}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -60,7 +75,8 @@ func Test_find(t *testing.T) {
 		want  int
 		want1 bool
 	}{
-		// TODO: Add test cases.
+		{"Find function test true", args{[][]rune{{97}, {98}, {100}, {101}}, []rune{101}}, 3, true},
+		{"Find function test false", args{[][]rune{{97}, {98}, {100}, {101}}, []rune{102}}, -1, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -84,12 +100,33 @@ func Test_sum(t *testing.T) {
 		args args
 		want int
 	}{
-		// TODO: Add test cases.
+		{"Sum function test", args{[]int{10, 40, 5, 2, 20}}, 77},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := sum(tt.args.arr); got != tt.want {
 				t.Errorf("sum() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_dot(t *testing.T) {
+	type args struct {
+		vect1 []int
+		vect2 []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want float32
+	}{
+		{"Dot function test", args{[]int{10, 40, 3}, []int{2, 20, 5}}, 835.0},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := dot(tt.args.vect1, tt.args.vect2); got != tt.want {
+				t.Errorf("dot() = %v, want %v", got, tt.want)
 			}
 		})
 	}

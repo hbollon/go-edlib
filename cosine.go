@@ -1,7 +1,6 @@
 package edlib
 
 import (
-	"fmt"
 	"math"
 	"strings"
 
@@ -10,11 +9,11 @@ import (
 
 // CosineSimilarity use cosine algorithm to return a similarity index between string vectors
 // Takes two strings as parameters and return an index.
+// This algorithm is only effective between sentences and not unique words.
 func CosineSimilarity(str1, str2 string) float32 {
 	// Split string before rune conversion for cosine calculation
 	splittedStr1 := strings.Split(str1, " ")
 	splittedStr2 := strings.Split(str2, " ")
-	fmt.Printf("%v , %v\n", splittedStr1, splittedStr2)
 
 	// Conversion of plitted string into rune array
 	runeStr1 := make([][]rune, len(splittedStr1))
@@ -44,7 +43,6 @@ func CosineSimilarity(str1, str2 string) float32 {
 			l2 = append(l2, 0)
 		}
 	}
-	fmt.Printf("%v\n%v\n%v\n", unionStr, l1, l2)
 
 	// Compute cosine algorithm
 	var cosineSim float32
@@ -52,9 +50,7 @@ func CosineSimilarity(str1, str2 string) float32 {
 		cosineSim += float32(l1[i] * l2[i])
 	}
 
-	cosineSim = cosineSim / float32(math.Sqrt(float64(sum(l1)*sum(l2))))
-	fmt.Printf("Cosine sim between %s/%s : %f\n", str1, str2, cosineSim)
-	return cosineSim
+	return cosineSim / float32(math.Sqrt(float64(sum(l1)*sum(l2))))
 }
 
 // Compute union between two string slices, convert result to rune matrix and return it
@@ -97,6 +93,7 @@ func sum(arr []int) int {
 	return res
 }
 
+// Compute dot product between two vectors
 func dot(vect1, vect2 []int) float32 {
 	var out float32
 	for i := 0; i < len(vect1); i++ {
