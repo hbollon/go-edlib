@@ -115,6 +115,18 @@ func TestStringsSimilarity(t *testing.T) {
 		{"JaroWinkler : DIXON/DICKSONX", args{"DIXON", "DICKSONX", JaroWinkler}, 0.81333333, false},
 		{"JaroWinkler : jellyfish/smellyfish", args{"jellyfish", "smellyfish", JaroWinkler}, 0.8962963, false},
 
+		// Cosine method
+		{"Cosine : First arg empty", args{"", "abcde", Cosine}, 0.0, false},
+		{"Cosine : Second arg empty", args{"abcde", "", Cosine}, 0.0, false},
+		{"Cosine : Same args", args{"abcde", "abcde", Cosine}, 1.0, false},
+		{"Cosine : No characters match", args{"abcd", "effgghh", Cosine}, 0.0, false},
+		{"Cosine : CRATE/TRACE", args{"CRATE", "TRACE", Cosine}, 0.0, false},
+		{"Cosine : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Cosine}, 0.0, false},
+		{"Cosine : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Cosine}, 0.0, false},
+		{"Cosine : Sentence 1", args{"Radiohead", "Carly Rae Jepsen", Cosine}, 0.0, false},
+		{"Cosine : Sentence 2", args{"I love horror movies", "Lights out is a horror movie", Cosine}, 0.20412414, false},
+		{"Cosine : Sentence 3", args{"love horror movies", "Lights out horror movie", Cosine}, 0.28867513, false},
+
 		// Illegal argument error
 		{"Undefined integer value for method", args{"abc", "abcde", 42}, 0.0, true},
 	}

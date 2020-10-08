@@ -24,6 +24,8 @@ const (
 	Jaro Algorithm = iota
 	// JaroWinkler algo identifier
 	JaroWinkler Algorithm = iota
+	// Cosisne algo identifier
+	Cosine Algorithm = iota
 )
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
@@ -48,6 +50,8 @@ func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error
 		return JaroSimilarity(str1, str2), nil
 	case JaroWinkler:
 		return JaroWinklerSimilarity(str1, str2), nil
+	case Cosine:
+		return CosineSimilarity(str1, str2), nil
 	default:
 		return 0.0, errors.New("Illegal argument for algorithm method")
 	}
