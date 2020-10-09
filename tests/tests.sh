@@ -4,10 +4,9 @@
 # Require go >= 1.13
 
 endpath=$(basename $(pwd))
-echo $endpath
 if [ $endpath == "tests" ]
 then
     cd ..
 fi
 
-go test ./... -v -race -coverprofile=coverage.out -covermode=atomic
+go test ./... -v -race -coverprofile=tests/coverage.txt -covermode=atomic | tee tests/tests.txt

@@ -1,0 +1,508 @@
+=== RUN   TestCosineSimilarity
+=== RUN   TestCosineSimilarity/Cosine_sim_1
+=== RUN   TestCosineSimilarity/Cosine_sim_2
+=== RUN   TestCosineSimilarity/Cosine_sim_3
+--- PASS: TestCosineSimilarity (0.00s)
+    --- PASS: TestCosineSimilarity/Cosine_sim_1 (0.00s)
+    --- PASS: TestCosineSimilarity/Cosine_sim_2 (0.00s)
+    --- PASS: TestCosineSimilarity/Cosine_sim_3 (0.00s)
+=== RUN   Test_union
+=== RUN   Test_union/Union_function_test
+--- PASS: Test_union (0.00s)
+    --- PASS: Test_union/Union_function_test (0.00s)
+=== RUN   Test_find
+=== RUN   Test_find/Find_function_test_true
+=== RUN   Test_find/Find_function_test_false
+--- PASS: Test_find (0.00s)
+    --- PASS: Test_find/Find_function_test_true (0.00s)
+    --- PASS: Test_find/Find_function_test_false (0.00s)
+=== RUN   Test_sum
+=== RUN   Test_sum/Sum_function_test
+--- PASS: Test_sum (0.00s)
+    --- PASS: Test_sum/Sum_function_test (0.00s)
+=== RUN   Test_dot
+=== RUN   Test_dot/Dot_function_test
+--- PASS: Test_dot (0.00s)
+    --- PASS: Test_dot/Dot_function_test (0.00s)
+=== RUN   TestHammingDistance
+=== RUN   TestHammingDistance/aa/aa
+=== RUN   TestHammingDistance/ab/aa
+=== RUN   TestHammingDistance/ab/ba
+=== RUN   TestHammingDistance/ab/aaa
+=== RUN   TestHammingDistance/bbb/a
+=== RUN   TestHammingDistance/🙂😄🙂😄/😄🙂😄🙂
+--- PASS: TestHammingDistance (0.00s)
+    --- PASS: TestHammingDistance/aa/aa (0.00s)
+    --- PASS: TestHammingDistance/ab/aa (0.00s)
+    --- PASS: TestHammingDistance/ab/ba (0.00s)
+    --- PASS: TestHammingDistance/ab/aaa (0.00s)
+    --- PASS: TestHammingDistance/bbb/a (0.00s)
+    --- PASS: TestHammingDistance/🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+=== RUN   TestJaroSimilarity
+=== RUN   TestJaroSimilarity/First_arg_empty
+=== RUN   TestJaroSimilarity/Second_arg_empty
+=== RUN   TestJaroSimilarity/Same_args
+=== RUN   TestJaroSimilarity/No_characters_match
+=== RUN   TestJaroSimilarity/CRATE/TRACE
+=== RUN   TestJaroSimilarity/MARTHA/MARHTA
+=== RUN   TestJaroSimilarity/DIXON/DICKSONX
+=== RUN   TestJaroSimilarity/jellyfish/smellyfish
+--- PASS: TestJaroSimilarity (0.00s)
+    --- PASS: TestJaroSimilarity/First_arg_empty (0.00s)
+    --- PASS: TestJaroSimilarity/Second_arg_empty (0.00s)
+    --- PASS: TestJaroSimilarity/Same_args (0.00s)
+    --- PASS: TestJaroSimilarity/No_characters_match (0.00s)
+    --- PASS: TestJaroSimilarity/CRATE/TRACE (0.00s)
+    --- PASS: TestJaroSimilarity/MARTHA/MARHTA (0.00s)
+    --- PASS: TestJaroSimilarity/DIXON/DICKSONX (0.00s)
+    --- PASS: TestJaroSimilarity/jellyfish/smellyfish (0.00s)
+=== RUN   TestJaroWinklerSimilarity
+=== RUN   TestJaroWinklerSimilarity/First_arg_empty
+=== RUN   TestJaroWinklerSimilarity/Second_arg_empty
+=== RUN   TestJaroWinklerSimilarity/Same_args
+=== RUN   TestJaroWinklerSimilarity/No_characters_match
+=== RUN   TestJaroWinklerSimilarity/TRACE/TRACE
+=== RUN   TestJaroWinklerSimilarity/CRATE/TRACE
+=== RUN   TestJaroWinklerSimilarity/TRATE/TRACE
+=== RUN   TestJaroWinklerSimilarity/DIXON/DICKSONX
+--- PASS: TestJaroWinklerSimilarity (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/First_arg_empty (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/Second_arg_empty (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/Same_args (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/No_characters_match (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/TRACE/TRACE (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/CRATE/TRACE (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/TRATE/TRACE (0.00s)
+    --- PASS: TestJaroWinklerSimilarity/DIXON/DICKSONX (0.00s)
+=== RUN   TestLCS
+=== RUN   TestLCS/AB/empty
+=== RUN   TestLCS/empty/AB
+=== RUN   TestLCS/AB/AB
+=== RUN   TestLCS/ABCD/ACBAD
+=== RUN   TestLCS/ABCDGH/AEDFHR
+=== RUN   TestLCS/AGGTAB/GXTXAYB
+=== RUN   TestLCS/XMJYAUZ/MZJAWXU
+--- PASS: TestLCS (0.00s)
+    --- PASS: TestLCS/AB/empty (0.00s)
+    --- PASS: TestLCS/empty/AB (0.00s)
+    --- PASS: TestLCS/AB/AB (0.00s)
+    --- PASS: TestLCS/ABCD/ACBAD (0.00s)
+    --- PASS: TestLCS/ABCDGH/AEDFHR (0.00s)
+    --- PASS: TestLCS/AGGTAB/GXTXAYB (0.00s)
+    --- PASS: TestLCS/XMJYAUZ/MZJAWXU (0.00s)
+=== RUN   TestLCSBacktrack
+=== RUN   TestLCSBacktrack/AB/empty
+=== RUN   TestLCSBacktrack/empty/AB
+=== RUN   TestLCSBacktrack/AB/AB
+=== RUN   TestLCSBacktrack/ABCD/ACBAD
+=== RUN   TestLCSBacktrack/ABCDGH/AEDFHR
+=== RUN   TestLCSBacktrack/AGGTAB/GXTXAYB
+=== RUN   TestLCSBacktrack/XMJYAUZ/MZJAWXU
+--- PASS: TestLCSBacktrack (0.00s)
+    --- PASS: TestLCSBacktrack/AB/empty (0.00s)
+    --- PASS: TestLCSBacktrack/empty/AB (0.00s)
+    --- PASS: TestLCSBacktrack/AB/AB (0.00s)
+    --- PASS: TestLCSBacktrack/ABCD/ACBAD (0.00s)
+    --- PASS: TestLCSBacktrack/ABCDGH/AEDFHR (0.00s)
+    --- PASS: TestLCSBacktrack/AGGTAB/GXTXAYB (0.00s)
+    --- PASS: TestLCSBacktrack/XMJYAUZ/MZJAWXU (0.00s)
+=== RUN   TestLCSBacktrackAll
+=== RUN   TestLCSBacktrackAll/AB/empty
+=== RUN   TestLCSBacktrackAll/empty/AB
+=== RUN   TestLCSBacktrackAll/AB/AB
+=== RUN   TestLCSBacktrackAll/ABCD/ACBAD
+=== RUN   TestLCSBacktrackAll/ABCDGH/AEDFHR
+=== RUN   TestLCSBacktrackAll/AGGTAB/GXTXAYB
+=== RUN   TestLCSBacktrackAll/XMJYAUZ/MZJAWXU
+=== RUN   TestLCSBacktrackAll/AZBYCWDX/ZAYBWCXD
+=== RUN   TestLCSBacktrackAll/AATCC/ACACG
+--- PASS: TestLCSBacktrackAll (0.00s)
+    --- PASS: TestLCSBacktrackAll/AB/empty (0.00s)
+    --- PASS: TestLCSBacktrackAll/empty/AB (0.00s)
+    --- PASS: TestLCSBacktrackAll/AB/AB (0.00s)
+    --- PASS: TestLCSBacktrackAll/ABCD/ACBAD (0.00s)
+    --- PASS: TestLCSBacktrackAll/ABCDGH/AEDFHR (0.00s)
+    --- PASS: TestLCSBacktrackAll/AGGTAB/GXTXAYB (0.00s)
+    --- PASS: TestLCSBacktrackAll/XMJYAUZ/MZJAWXU (0.00s)
+    --- PASS: TestLCSBacktrackAll/AZBYCWDX/ZAYBWCXD (0.00s)
+    --- PASS: TestLCSBacktrackAll/AATCC/ACACG (0.00s)
+=== RUN   TestLCSDiff
+=== RUN   TestLCSDiff/AB/empty
+=== RUN   TestLCSDiff/empty/AB
+=== RUN   TestLCSDiff/AB/AB
+=== RUN   TestLCSDiff/computer/houseboat
+[ h c o m p u s e b o a t e r  + -   - -   + + + + +   - -]
+--- PASS: TestLCSDiff (0.00s)
+    --- PASS: TestLCSDiff/AB/empty (0.00s)
+    --- PASS: TestLCSDiff/empty/AB (0.00s)
+    --- PASS: TestLCSDiff/AB/AB (0.00s)
+    --- PASS: TestLCSDiff/computer/houseboat (0.00s)
+=== RUN   TestLCSEditDistance
+=== RUN   TestLCSEditDistance/AB/empty
+=== RUN   TestLCSEditDistance/empty/AB
+=== RUN   TestLCSEditDistance/No_characters_match
+=== RUN   TestLCSEditDistance/AB/AB
+=== RUN   TestLCSEditDistance/CAT/CUT
+=== RUN   TestLCSEditDistance/ACB/AB
+=== RUN   TestLCSEditDistance/ABC/ACD
+=== RUN   TestLCSEditDistance/ABCD/ACBAD
+=== RUN   TestLCSEditDistance/ABCDGH/AEDFHR
+=== RUN   TestLCSEditDistance/AGGTAB/GXTXAYB
+=== RUN   TestLCSEditDistance/XMJYAUZ/MZJAWXU
+--- PASS: TestLCSEditDistance (0.00s)
+    --- PASS: TestLCSEditDistance/AB/empty (0.00s)
+    --- PASS: TestLCSEditDistance/empty/AB (0.00s)
+    --- PASS: TestLCSEditDistance/No_characters_match (0.00s)
+    --- PASS: TestLCSEditDistance/AB/AB (0.00s)
+    --- PASS: TestLCSEditDistance/CAT/CUT (0.00s)
+    --- PASS: TestLCSEditDistance/ACB/AB (0.00s)
+    --- PASS: TestLCSEditDistance/ABC/ACD (0.00s)
+    --- PASS: TestLCSEditDistance/ABCD/ACBAD (0.00s)
+    --- PASS: TestLCSEditDistance/ABCDGH/AEDFHR (0.00s)
+    --- PASS: TestLCSEditDistance/AGGTAB/GXTXAYB (0.00s)
+    --- PASS: TestLCSEditDistance/XMJYAUZ/MZJAWXU (0.00s)
+=== RUN   Test_levenshteinDistance
+=== RUN   Test_levenshteinDistance/First_arg_empty
+=== RUN   Test_levenshteinDistance/Second_arg_empty
+=== RUN   Test_levenshteinDistance/Same_args
+=== RUN   Test_levenshteinDistance/ab/aa
+=== RUN   Test_levenshteinDistance/ab/ba
+=== RUN   Test_levenshteinDistance/ab/aaa
+=== RUN   Test_levenshteinDistance/bbb/a
+=== RUN   Test_levenshteinDistance/kitten/sitting
+=== RUN   Test_levenshteinDistance/distance/difference
+=== RUN   Test_levenshteinDistance/a_cat/an_abct
+=== RUN   Test_levenshteinDistance/こにんち/こんにちは
+=== RUN   Test_levenshteinDistance/🙂😄🙂😄/😄🙂😄🙂
+--- PASS: Test_levenshteinDistance (0.00s)
+    --- PASS: Test_levenshteinDistance/First_arg_empty (0.00s)
+    --- PASS: Test_levenshteinDistance/Second_arg_empty (0.00s)
+    --- PASS: Test_levenshteinDistance/Same_args (0.00s)
+    --- PASS: Test_levenshteinDistance/ab/aa (0.00s)
+    --- PASS: Test_levenshteinDistance/ab/ba (0.00s)
+    --- PASS: Test_levenshteinDistance/ab/aaa (0.00s)
+    --- PASS: Test_levenshteinDistance/bbb/a (0.00s)
+    --- PASS: Test_levenshteinDistance/kitten/sitting (0.00s)
+    --- PASS: Test_levenshteinDistance/distance/difference (0.00s)
+    --- PASS: Test_levenshteinDistance/a_cat/an_abct (0.00s)
+    --- PASS: Test_levenshteinDistance/こにんち/こんにちは (0.00s)
+    --- PASS: Test_levenshteinDistance/🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+=== RUN   TestOSADamerauLevenshteinDistance
+=== RUN   TestOSADamerauLevenshteinDistance/First_arg_empty
+=== RUN   TestOSADamerauLevenshteinDistance/Second_arg_empty
+=== RUN   TestOSADamerauLevenshteinDistance/Same_args
+=== RUN   TestOSADamerauLevenshteinDistance/ab/aa
+=== RUN   TestOSADamerauLevenshteinDistance/ab/ba
+=== RUN   TestOSADamerauLevenshteinDistance/ab/aaa
+=== RUN   TestOSADamerauLevenshteinDistance/bbb/a
+=== RUN   TestOSADamerauLevenshteinDistance/ca/abc
+=== RUN   TestOSADamerauLevenshteinDistance/a_cat/an_abct
+=== RUN   TestOSADamerauLevenshteinDistance/dixon/dicksonx
+=== RUN   TestOSADamerauLevenshteinDistance/jellyfish/smellyfish
+=== RUN   TestOSADamerauLevenshteinDistance/こにんち/こんにちは
+=== RUN   TestOSADamerauLevenshteinDistance/🙂😄🙂😄/😄🙂😄🙂
+--- PASS: TestOSADamerauLevenshteinDistance (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/First_arg_empty (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/Second_arg_empty (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/Same_args (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/ab/aa (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/ab/ba (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/ab/aaa (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/bbb/a (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/ca/abc (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/a_cat/an_abct (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/dixon/dicksonx (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/jellyfish/smellyfish (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/こにんち/こんにちは (0.00s)
+    --- PASS: TestOSADamerauLevenshteinDistance/🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+=== RUN   TestDamerauLevenshteinDistance
+=== RUN   TestDamerauLevenshteinDistance/First_arg_empty
+=== RUN   TestDamerauLevenshteinDistance/Second_arg_empty
+=== RUN   TestDamerauLevenshteinDistance/Same_args
+=== RUN   TestDamerauLevenshteinDistance/ab/aa
+=== RUN   TestDamerauLevenshteinDistance/ab/ba
+=== RUN   TestDamerauLevenshteinDistance/ab/aaa
+=== RUN   TestDamerauLevenshteinDistance/bbb/a
+=== RUN   TestDamerauLevenshteinDistance/ca/abc
+=== RUN   TestDamerauLevenshteinDistance/a_cat/an_abct
+=== RUN   TestDamerauLevenshteinDistance/dixon/dicksonx
+=== RUN   TestDamerauLevenshteinDistance/jellyfish/smellyfish
+=== RUN   TestDamerauLevenshteinDistance/こにんち/こんにちは
+=== RUN   TestDamerauLevenshteinDistance/🙂😄🙂😄/😄🙂😄🙂
+--- PASS: TestDamerauLevenshteinDistance (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/First_arg_empty (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/Second_arg_empty (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/Same_args (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/ab/aa (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/ab/ba (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/ab/aaa (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/bbb/a (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/ca/abc (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/a_cat/an_abct (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/dixon/dicksonx (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/jellyfish/smellyfish (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/こにんち/こんにちは (0.00s)
+    --- PASS: TestDamerauLevenshteinDistance/🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+=== RUN   TestStringsSimilarity
+=== RUN   TestStringsSimilarity/Levenshtein_:_First_arg_empty
+=== RUN   TestStringsSimilarity/Levenshtein_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/Levenshtein_:_Same_args
+=== RUN   TestStringsSimilarity/Levenshtein_:_No_characters_match
+=== RUN   TestStringsSimilarity/Levenshtein_:_CRATE/TRACE
+=== RUN   TestStringsSimilarity/Levenshtein_:_MARTHA/MARHTA
+=== RUN   TestStringsSimilarity/Levenshtein_:_DIXON/DICKSONX
+=== RUN   TestStringsSimilarity/Levenshtein_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_First_arg_empty
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_Same_args
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_No_characters_match
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_ab/aaa
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_bbb/a
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_ca/abc
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_a_cat/an_abct
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_dixon/dicksonx
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_こにんち/こんにちは
+=== RUN   TestStringsSimilarity/DamerauLevenshtein_:_🙂😄🙂😄/😄🙂😄🙂
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_First_arg_empty
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_Same_args
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_No_characters_match
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_ab/aaa
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_bbb/a
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_ca/abc
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_a_cat/an_abct
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_dixon/dicksonx
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_こにんち/こんにちは
+=== RUN   TestStringsSimilarity/OSADamerauLevenshtein_:_🙂😄🙂😄/😄🙂😄🙂
+=== RUN   TestStringsSimilarity/LCS_:_First_arg_empty
+=== RUN   TestStringsSimilarity/LCS_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/LCS_:_Same_args
+=== RUN   TestStringsSimilarity/LCS_:_ABCDGH/AEDFHR
+=== RUN   TestStringsSimilarity/LCS_:_AGGTAB/GXTXAYB
+=== RUN   TestStringsSimilarity/LCS_:_XMJYAUZ/MZJAWXU
+=== RUN   TestStringsSimilarity/LCS_:_CRATE/TRACE
+=== RUN   TestStringsSimilarity/LCS_:_MARTHA/MARHTA
+=== RUN   TestStringsSimilarity/LCS_:_DIXON/DICKSONX
+=== RUN   TestStringsSimilarity/LCS_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/Hamming_:_First_arg_empty
+=== RUN   TestStringsSimilarity/Hamming_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/Hamming_:_Same_args
+=== RUN   TestStringsSimilarity/Hamming_:_No_characters_match
+=== RUN   TestStringsSimilarity/Hamming_:_aa/aa
+=== RUN   TestStringsSimilarity/Hamming_:_ab/aa
+=== RUN   TestStringsSimilarity/Hamming_:_ab/ba
+=== RUN   TestStringsSimilarity/Hamming_:_a_cat/an_abct
+=== RUN   TestStringsSimilarity/Hamming_:_dixon/dicksonx
+=== RUN   TestStringsSimilarity/Hamming_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/Hamming_:_こにんち/こんにちは
+=== RUN   TestStringsSimilarity/Hamming_:_🙂😄🙂😄/😄🙂😄🙂
+=== RUN   TestStringsSimilarity/Jaro_:_First_arg_empty
+=== RUN   TestStringsSimilarity/Jaro_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/Jaro_:_Same_args
+=== RUN   TestStringsSimilarity/Jaro_:_No_characters_match
+=== RUN   TestStringsSimilarity/Jaro_:_CRATE/TRACE
+=== RUN   TestStringsSimilarity/Jaro_:_MARTHA/MARHTA
+=== RUN   TestStringsSimilarity/Jaro_:_DIXON/DICKSONX
+=== RUN   TestStringsSimilarity/Jaro_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/JaroWinkler_:_First_arg_empty
+=== RUN   TestStringsSimilarity/JaroWinkler_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/JaroWinkler_:_Same_args
+=== RUN   TestStringsSimilarity/JaroWinkler_:_No_characters_match
+=== RUN   TestStringsSimilarity/JaroWinkler_:_CRATE/TRACE
+=== RUN   TestStringsSimilarity/JaroWinkler_:_MARTHA/MARHTA
+=== RUN   TestStringsSimilarity/JaroWinkler_:_DIXON/DICKSONX
+=== RUN   TestStringsSimilarity/JaroWinkler_:_jellyfish/smellyfish
+=== RUN   TestStringsSimilarity/Cosine_:_First_arg_empty
+=== RUN   TestStringsSimilarity/Cosine_:_Second_arg_empty
+=== RUN   TestStringsSimilarity/Cosine_:_Same_args
+=== RUN   TestStringsSimilarity/Cosine_:_No_characters_match
+=== RUN   TestStringsSimilarity/Cosine_:_CRATE/TRACE
+=== RUN   TestStringsSimilarity/Cosine_:_MARTHA/MARHTA
+=== RUN   TestStringsSimilarity/Cosine_:_DIXON/DICKSONX
+=== RUN   TestStringsSimilarity/Cosine_:_Sentence_1
+=== RUN   TestStringsSimilarity/Cosine_:_Sentence_2
+=== RUN   TestStringsSimilarity/Cosine_:_Sentence_3
+=== RUN   TestStringsSimilarity/Undefined_integer_value_for_method
+--- PASS: TestStringsSimilarity (0.01s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_CRATE/TRACE (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_MARTHA/MARHTA (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_DIXON/DICKSONX (0.00s)
+    --- PASS: TestStringsSimilarity/Levenshtein_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_ab/aaa (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_bbb/a (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_ca/abc (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_a_cat/an_abct (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_dixon/dicksonx (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_こにんち/こんにちは (0.00s)
+    --- PASS: TestStringsSimilarity/DamerauLevenshtein_:_🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_ab/aaa (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_bbb/a (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_ca/abc (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_a_cat/an_abct (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_dixon/dicksonx (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_こにんち/こんにちは (0.00s)
+    --- PASS: TestStringsSimilarity/OSADamerauLevenshtein_:_🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_ABCDGH/AEDFHR (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_AGGTAB/GXTXAYB (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_XMJYAUZ/MZJAWXU (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_CRATE/TRACE (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_MARTHA/MARHTA (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_DIXON/DICKSONX (0.00s)
+    --- PASS: TestStringsSimilarity/LCS_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_aa/aa (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_ab/aa (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_ab/ba (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_a_cat/an_abct (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_dixon/dicksonx (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_こにんち/こんにちは (0.00s)
+    --- PASS: TestStringsSimilarity/Hamming_:_🙂😄🙂😄/😄🙂😄🙂 (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_CRATE/TRACE (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_MARTHA/MARHTA (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_DIXON/DICKSONX (0.00s)
+    --- PASS: TestStringsSimilarity/Jaro_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_CRATE/TRACE (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_MARTHA/MARHTA (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_DIXON/DICKSONX (0.00s)
+    --- PASS: TestStringsSimilarity/JaroWinkler_:_jellyfish/smellyfish (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_First_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_Second_arg_empty (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_Same_args (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_No_characters_match (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_CRATE/TRACE (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_MARTHA/MARHTA (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_DIXON/DICKSONX (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_Sentence_1 (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_Sentence_2 (0.00s)
+    --- PASS: TestStringsSimilarity/Cosine_:_Sentence_3 (0.00s)
+    --- PASS: TestStringsSimilarity/Undefined_integer_value_for_method (0.00s)
+=== RUN   TestFuzzySearch
+=== RUN   TestFuzzySearch/FuzzySearch_'testing'
+=== RUN   TestFuzzySearch/FuzzySearch_'testing'#01
+=== RUN   TestFuzzySearch/FuzzySearch_'testing'_err
+--- PASS: TestFuzzySearch (0.00s)
+    --- PASS: TestFuzzySearch/FuzzySearch_'testing' (0.00s)
+    --- PASS: TestFuzzySearch/FuzzySearch_'testing'#01 (0.00s)
+    --- PASS: TestFuzzySearch/FuzzySearch_'testing'_err (0.00s)
+=== RUN   TestFuzzySearchThreshold
+=== RUN   TestFuzzySearchThreshold/FuzzySearch_'testing'
+=== RUN   TestFuzzySearchThreshold/FuzzySearch_'testing'#01
+=== RUN   TestFuzzySearchThreshold/FuzzySearch_'testing'#02
+=== RUN   TestFuzzySearchThreshold/FuzzySearch_'testing'_err
+--- PASS: TestFuzzySearchThreshold (0.00s)
+    --- PASS: TestFuzzySearchThreshold/FuzzySearch_'testing' (0.00s)
+    --- PASS: TestFuzzySearchThreshold/FuzzySearch_'testing'#01 (0.00s)
+    --- PASS: TestFuzzySearchThreshold/FuzzySearch_'testing'#02 (0.00s)
+    --- PASS: TestFuzzySearchThreshold/FuzzySearch_'testing'_err (0.00s)
+=== RUN   TestFuzzySearchSet
+=== RUN   TestFuzzySearchSet/FuzzySearch_'testing'
+=== RUN   TestFuzzySearchSet/FuzzySearch_'testing'_err
+--- PASS: TestFuzzySearchSet (0.00s)
+    --- PASS: TestFuzzySearchSet/FuzzySearch_'testing' (0.00s)
+    --- PASS: TestFuzzySearchSet/FuzzySearch_'testing'_err (0.00s)
+=== RUN   TestFuzzySearchSetThreshold
+=== RUN   TestFuzzySearchSetThreshold/FuzzySearch_'testing'
+=== RUN   TestFuzzySearchSetThreshold/FuzzySearch_'testing'_err
+--- PASS: TestFuzzySearchSetThreshold (0.00s)
+    --- PASS: TestFuzzySearchSetThreshold/FuzzySearch_'testing' (0.00s)
+    --- PASS: TestFuzzySearchSetThreshold/FuzzySearch_'testing'_err (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib	0.049s	coverage: 100.0% of statements
+=== RUN   TestOrderedMap_Len
+=== RUN   TestOrderedMap_Len/OrderedMap_Len
+--- PASS: TestOrderedMap_Len (0.00s)
+    --- PASS: TestOrderedMap_Len/OrderedMap_Len (0.00s)
+=== RUN   TestOrderedMap_Less
+=== RUN   TestOrderedMap_Less/OrderedMap_Less_false
+=== RUN   TestOrderedMap_Less/OrderedMap_Less_true
+--- PASS: TestOrderedMap_Less (0.00s)
+    --- PASS: TestOrderedMap_Less/OrderedMap_Less_false (0.00s)
+    --- PASS: TestOrderedMap_Less/OrderedMap_Less_true (0.00s)
+=== RUN   TestOrderedMap_Swap
+=== RUN   TestOrderedMap_Swap/OrderedMap_Swap
+--- PASS: TestOrderedMap_Swap (0.00s)
+    --- PASS: TestOrderedMap_Swap/OrderedMap_Swap (0.00s)
+=== RUN   TestOrderedMap_ToArray
+=== RUN   TestOrderedMap_ToArray/OrderedMap_ToArray
+--- PASS: TestOrderedMap_ToArray (0.00s)
+    --- PASS: TestOrderedMap_ToArray/OrderedMap_ToArray (0.00s)
+=== RUN   TestOrderedMap_SortByValues
+=== RUN   TestOrderedMap_SortByValues/OrderedMap_SortByValues
+--- PASS: TestOrderedMap_SortByValues (0.00s)
+    --- PASS: TestOrderedMap_SortByValues/OrderedMap_SortByValues (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.018s	coverage: 100.0% of statements
+=== RUN   TestMin
+=== RUN   TestMin/Min_between_2/4
+=== RUN   TestMin/Min_between_-25/-42
+--- PASS: TestMin (0.00s)
+    --- PASS: TestMin/Min_between_2/4 (0.00s)
+    --- PASS: TestMin/Min_between_-25/-42 (0.00s)
+=== RUN   TestMax
+=== RUN   TestMax/Min_between_2/4
+=== RUN   TestMax/Min_between_-25/-42
+--- PASS: TestMax (0.00s)
+    --- PASS: TestMax/Min_between_2/4 (0.00s)
+    --- PASS: TestMax/Min_between_-25/-42 (0.00s)
+=== RUN   TestEqual
+=== RUN   TestEqual/Equal_between_toto/test
+=== RUN   TestEqual/Equal_between_toto/toto
+=== RUN   TestEqual/Equal_between_Toto/toto
+=== RUN   TestEqual/Equal_between_🙂😄/🙂😄
+=== RUN   TestEqual/Equal_between_🙂😄/🙂😄🙂😄
+--- PASS: TestEqual (0.00s)
+    --- PASS: TestEqual/Equal_between_toto/test (0.00s)
+    --- PASS: TestEqual/Equal_between_toto/toto (0.00s)
+    --- PASS: TestEqual/Equal_between_Toto/toto (0.00s)
+    --- PASS: TestEqual/Equal_between_🙂😄/🙂😄 (0.00s)
+    --- PASS: TestEqual/Equal_between_🙂😄/🙂😄🙂😄 (0.00s)
+=== RUN   TestStringHashMap_AddAll
+=== RUN   TestStringHashMap_AddAll/AddAll_between_hashMapA/hashMapB
+--- PASS: TestStringHashMap_AddAll (0.00s)
+    --- PASS: TestStringHashMap_AddAll/AddAll_between_hashMapA/hashMapB (0.00s)
+=== RUN   TestStringHashMap_ToArray
+=== RUN   TestStringHashMap_ToArray/ToString()_hashMapA
+=== RUN   TestStringHashMap_ToArray/ToString()_hashMapB
+--- PASS: TestStringHashMap_ToArray (0.00s)
+    --- PASS: TestStringHashMap_ToArray/ToString()_hashMapA (0.00s)
+    --- PASS: TestStringHashMap_ToArray/ToString()_hashMapB (0.00s)
+PASS
+coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib/internal/utils	0.018s	coverage: 100.0% of statements
+testing: warning: no tests to run
+PASS
+coverage: [no statements]
+ok  	github.com/hbollon/go-edlib/tests/benchmarks	0.019s	coverage: [no statements] [no tests to run]
