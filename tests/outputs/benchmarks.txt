@@ -1,0 +1,109 @@
+
+Begin benchmark between sameLengthStringInput/asmePenhtgTsrnigIpnut : 
+goos: linux
+goarch: amd64
+pkg: github.com/hbollon/go-edlib/tests/benchmarks
+BenchmarkEdlibAlgorithms/Levenshtein_sameLengthStringInput/asmePenhtgTsrnigIpnut-4         	  763654	      1350 ns/op	     176 B/op	       1 allocs/op
+Sim: 0.476190, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/LCS_sameLengthStringInput/asmePenhtgTsrnigIpnut-4                 	  407097	      2741 ns/op	    4448 B/op	      23 allocs/op
+Sim: 0.333333, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Hamming_sameLengthStringInput/asmePenhtgTsrnigIpnut-4             	14306888	        81.1 ns/op	       0 B/op	       0 allocs/op
+Sim: 0.476190, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/DamerauLevenshtein_sameLengthStringInput/asmePenhtgTsrnigIpnut-4  	   85362	     13626 ns/op	    5720 B/op	      27 allocs/op
+Sim: 0.619048, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/OSADamerauLevenshtein_sameLengthStringInput/asmePenhtgTsrnigIpnut-4         	  366662	      3203 ns/op	    4448 B/op	      23 allocs/op
+Sim: 0.619048, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Jaro_sameLengthStringInput/asmePenhtgTsrnigIpnut-4                          	 2701646	       438 ns/op	     352 B/op	       2 allocs/op
+Sim: 0.802910, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/JaroWinkler_sameLengthStringInput/asmePenhtgTsrnigIpnut-4                   	 2384697	       512 ns/op	     352 B/op	       2 allocs/op
+Sim: 0.802910, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Cosine_sameLengthStringInput/asmePenhtgTsrnigIpnut-4                        	 1409140	       848 ns/op	     608 B/op	      14 allocs/op
+Sim: 0.000000, Err: %!s(<nil>) 
+
+
+Begin benchmark between pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis : 
+BenchmarkEdlibAlgorithms/Levenshtein_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4         	  169026	      6430 ns/op	     752 B/op	       3 allocs/op
+Sim: 0.800000, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/LCS_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4                 	  112341	     10924 ns/op	   19184 B/op	      49 allocs/op
+Sim: 0.666667, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Hamming_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4             	 4506757	       262 ns/op	     384 B/op	       3 allocs/op
+Sim: 0.000000, Err: Undefined for strings of unequal length 
+
+BenchmarkEdlibAlgorithms/DamerauLevenshtein_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4  	   24246	     49769 ns/op	   20291 B/op	      53 allocs/op
+Sim: 0.822222, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/OSADamerauLevenshtein_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4         	   88868	     13190 ns/op	   19184 B/op	      49 allocs/op
+Sim: 0.822222, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Jaro_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4                          	  711892	      1583 ns/op	    1104 B/op	       4 allocs/op
+Sim: 0.807660, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/JaroWinkler_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4                   	  586168	      1872 ns/op	    1472 B/op	       6 allocs/op
+Sim: 0.807660, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Cosine_pneumonoultramicroscopicsilicovolcanoconiosis/nneumonkultramicrrscoipcsilicocolvanocpnisis-4                        	 1000000	      1079 ns/op	     960 B/op	      14 allocs/op
+Sim: 0.000000, Err: %!s(<nil>) 
+
+
+Begin benchmark between こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは : 
+BenchmarkEdlibAlgorithms/Levenshtein_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                           	  736291	      1585 ns/op	     144 B/op	       1 allocs/op
+Sim: 0.800000, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/LCS_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                                   	  438211	      2750 ns/op	    3952 B/op	      18 allocs/op
+Sim: -0.293333, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Hamming_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                               	 2272374	       524 ns/op	      16 B/op	       1 allocs/op
+Sim: 0.000000, Err: Undefined for strings of unequal length 
+
+BenchmarkEdlibAlgorithms/DamerauLevenshtein_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                    	  158235	      7433 ns/op	    4480 B/op	      19 allocs/op
+Sim: 0.840000, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/OSADamerauLevenshtein_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                           	  336178	      3463 ns/op	    3952 B/op	      18 allocs/op
+Sim: 0.840000, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Jaro_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                                            	 1482712	       809 ns/op	     336 B/op	       2 allocs/op
+Sim: 0.796667, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/JaroWinkler_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                                     	  872822	      1345 ns/op	     336 B/op	       2 allocs/op
+Sim: 0.817000, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Cosine_こにんちこにんちこにんちこにんち/こんにちはこんにちはこんにちはこんにちはこんにちは-4                                                                                                          	  655438	      1739 ns/op	     576 B/op	      14 allocs/op
+Sim: 0.000000, Err: %!s(<nil>) 
+
+
+Begin benchmark between I love horror movies/Lights out is a horror movie : 
+BenchmarkEdlibAlgorithms/Levenshtein_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                              	  677234	      1654 ns/op	     176 B/op	       1 allocs/op
+Sim: 0.464286, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/LCS_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                                      	  333585	      3162 ns/op	    5552 B/op	      22 allocs/op
+Sim: 0.357143, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Hamming_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                                  	12088550	        96.7 ns/op	      16 B/op	       1 allocs/op
+Sim: 0.000000, Err: Undefined for strings of unequal length 
+
+BenchmarkEdlibAlgorithms/DamerauLevenshtein_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                       	   72898	     16260 ns/op	    6581 B/op	      26 allocs/op
+Sim: 0.464286, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/OSADamerauLevenshtein_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                    	  275304	      3930 ns/op	    5552 B/op	      22 allocs/op
+Sim: 0.464286, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Jaro_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                                     	 2003420	       594 ns/op	     384 B/op	       2 allocs/op
+Sim: 0.644643, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/JaroWinkler_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                              	 1769107	       672 ns/op	     384 B/op	       2 allocs/op
+Sim: 0.644643, Err: %!s(<nil>) 
+
+BenchmarkEdlibAlgorithms/Cosine_I_love_horror_movies/Lights_out_is_a_horror_movie-4                                                                                                   	  435738	      2480 ns/op	    1904 B/op	      36 allocs/op
+Sim: 0.204124, Err: %!s(<nil>) 
+
+PASS
+ok  	github.com/hbollon/go-edlib/tests/benchmarks	45.393s

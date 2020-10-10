@@ -9,4 +9,4 @@ then
     cd ..
 fi
 
-go test ./... -v -race -coverprofile=tests/coverage.txt -covermode=atomic | tee tests/tests.txt
+go test ./... -v -race -coverprofile=tests/coverage.txt -covermode=atomic | tee tests/outputs/tests.txt

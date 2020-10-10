@@ -24,7 +24,7 @@ const (
 	Jaro Algorithm = iota
 	// JaroWinkler algo identifier
 	JaroWinkler Algorithm = iota
-	// Cosisne algo identifier
+	// Cosine algo identifier
 	Cosine Algorithm = iota
 )
 

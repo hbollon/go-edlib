@@ -9,4 +9,4 @@ then
     cd ..
 fi
 
-go test ./tests/benchmarks -bench=. | tee tests/benchmarks.txt
+go test ./tests/benchmarks -bench=. -benchmem | tee tests/outputs/benchmarks.txt
