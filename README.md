@@ -21,7 +21,7 @@
   </a>
 </p>
 
-> Golang string comparison and edit distance algorithms library featuring : Levenshtein, LCS, Hamming, Damerau levenshtein (OSA and Adjacent transpositions algorithms), Jaro-Winkler, etc...
+> Golang string comparison and edit distance algorithms library featuring : Levenshtein, LCS, Hamming, Damerau levenshtein (OSA and Adjacent transpositions algorithms), Jaro-Winkler, Cosine, etc...
 
 ---
 
@@ -31,6 +31,7 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Installation](#installation)
+- [Benchmarks](#benchmarks)
 - [Documentation](#documentation)
 - [Author](#author)
 - [Contributing](#-contributing)
@@ -55,14 +56,22 @@ This library is 100% test covered 😁
     - OSA (Optimal string alignment) ✨
     - Adjacent transpositions ✨
 - [Jaro & Jaro-Winkler](https://fr.wikipedia.org/wiki/Distance_de_Jaro-Winkler) similarity algorithms ✨
+- [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) algorithm to compare strings ✨
 
 - Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨
 - Fuzzy search functions based on edit distance with unique or multiples strings output ✨
 - Unicode compatibility ! 🥳
-- Many more to come !
+- And many more to come !
+
+## Benchmarks
+You can check an interactive Google chart with few benchmark cases for all similarity algorithms in this library through **StringSimilarity** function [here](http://benchgraph.codingberg.com/q5)
+
+However, if you want or need more details, you can also viewing benchmark raw output [here](https://github.com/hbollon/go-edlib/blob/master/tests/outputs/benchmarks.txt), which also includes memory allocations and test cases output (similarity result and errors).
+
+If you are on Linux and want to run them on your setup, you can run ``` ./tests/benchmark.sh ``` script.
 
 ## Installation
-Open bash into you project folder and run :
+Open bash into your project folder and run :
 
 ```bash
 go get github.com/hbollon/go-edlib
@@ -71,9 +80,12 @@ go get github.com/hbollon/go-edlib
 And import it into your project.
 
 ### Run tests
-If you want to run all units tests just run :
+If you are on Linux and want to run all unit tests just run ``` ./tests/tests.sh ``` script. 
+
+For Windows users you can run :
+
 ```bash
-go test ./... -coverpkg=./... # Add desired parameters to this command if you want
+go test ./... # Add desired parameters to this command if you want
 ```
 
 ## Documentation
