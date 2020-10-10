@@ -464,7 +464,7 @@ ok  	github.com/hbollon/go-edlib	0.049s	coverage: 100.0% of statements
     --- PASS: TestOrderedMap_SortByValues/OrderedMap_SortByValues (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.018s	coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.046s	coverage: 100.0% of statements
 === RUN   TestMin
 === RUN   TestMin/Min_between_2/4
 === RUN   TestMin/Min_between_-25/-42
@@ -501,8 +501,8 @@ ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.018s	coverage: 100.0% of 
     --- PASS: TestStringHashMap_ToArray/ToString()_hashMapB (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	github.com/hbollon/go-edlib/internal/utils	0.018s	coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib/internal/utils	0.026s	coverage: 100.0% of statements
 testing: warning: no tests to run
 PASS
 coverage: [no statements]
-ok  	github.com/hbollon/go-edlib/tests/benchmarks	0.019s	coverage: [no statements] [no tests to run]
+ok  	github.com/hbollon/go-edlib/tests/benchmarks	0.018s	coverage: [no statements] [no tests to run]

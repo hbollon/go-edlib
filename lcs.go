@@ -172,5 +172,5 @@ func LCSEditDistance(str1, str2 string) int {
 	}
 
 	lcs := LCS(str1, str2)
-	return (len(str1) - lcs) + (len(str2) - lcs)
+	return (len([]rune(str1)) - lcs) + (len([]rune(str2)) - lcs)
 }
