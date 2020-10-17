@@ -33,6 +33,7 @@
 - [Installation](#installation)
 - [Benchmarks](#benchmarks)
 - [Documentation](#documentation)
+- [Examples](#examples)
 - [Author](#author)
 - [Contributing](#-contributing)
 - [License](#-license)
@@ -71,18 +72,24 @@ However, if you want or need more details, you can also viewing benchmark raw ou
 If you are on Linux and want to run them on your setup, you can run ``` ./tests/benchmark.sh ``` script.
 
 ## Installation
-Open bash into your project folder and run :
+Open bash into your project folder and run:
 
 ```bash
 go get github.com/hbollon/go-edlib
 ```
 
-And import it into your project.
+And import it into your project:
+
+```go
+import (
+	"github.com/hbollon/go-edlib"
+)
+```
 
 ### Run tests
 If you are on Linux and want to run all unit tests just run ``` ./tests/tests.sh ``` script. 
 
-For Windows users you can run :
+For Windows users you can run:
 
 ```bash
 go test ./... # Add desired parameters to this command if you want
@@ -91,6 +98,223 @@ go test ./... # Add desired parameters to this command if you want
 ## Documentation
 
 **You can find all the documentation here :** [Documentation](https://godoc.org/github.com/hbollon/go-edlib) 
+
+## Examples
+
+### Calculate string similarity index between two string
+
+You can use ``` StringSimilarity(str1, str2, algorithm) ``` function.
+**algorithm** parameter must one of the following constants: 
+```go
+const (
+	// Levenshtein algo identifier
+	Levenshtein Algorithm = iota
+	// DamerauLevenshtein algo identifier
+	DamerauLevenshtein Algorithm = iota
+	// OSADamerauLevenshtein algo identifier
+	OSADamerauLevenshtein Algorithm = iota
+	// Lcs algo identifier
+	Lcs Algorithm = iota
+	// Hamming algo identifier
+	Hamming Algorithm = iota
+	// Jaro algo identifier
+	Jaro Algorithm = iota
+	// JaroWinkler algo identifier
+	JaroWinkler Algorithm = iota
+	// Cosine algo identifier
+	Cosine Algorithm = iota
+)
+```
+
+Example with levenshtein:
+```go
+res, err := edlib.StringsSimilarity("string1", "string2", edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Similarity: %f", res)
+}
+```
+
+### Execute fuzzy search based on string similarity algorithm
+
+#### 1. Most matching unique result without threshold
+
+You can use ``` FuzzySearch(str, strList, algorithm) ``` function.
+
+```go
+strList := []string{"test", "tester", "tests", "testers", "testing", "tsting", "sting"}
+res, err := edlib.FuzzySearch("testnig", strList, edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Result: %s", res)
+}
+
+```
+
+``` 
+Result: testing 
+```
+
+#### 2. Most matching unique result with threshold
+
+You can use ``` FuzzySearchThreshold(str, strList, minSimilarity, algorithm) ``` function.
+
+```go
+strList := []string{"test", "tester", "tests", "testers", "testing", "tsting", "sting"}
+res, err := edlib.FuzzySearchThreshold("testnig", strList, 0.7, edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Result for 'testnig': %s", res)
+}
+
+res, err = edlib.FuzzySearchThreshold("hello", strList, 0.7, edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Result for 'hello': %s", res)
+}
+
+```
+
+``` 
+Result for 'testnig': testing
+Result for 'hello':
+```
+
+#### 3. Most matching result set without threshold
+
+You can use ``` FuzzySearchSet(str, strList, resultQuantity, algorithm) ``` function.
+
+```go
+strList := []string{"test", "tester", "tests", "testers", "testing", "tsting", "sting"}
+res, err := edlib.FuzzySearchSet("testnig", strList, 3, edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Results: %s", strings.Join(res, ", "))
+}
+
+```
+
+``` 
+Results: testing, test, tester 
+```
+
+#### 4. Most matching result set with threshold
+
+You can use ``` FuzzySearchSetThreshold(str, strList, resultQuantity, minSimilarity, algorithm) ``` function.
+
+```go
+strList := []string{"test", "tester", "tests", "testers", "testing", "tsting", "sting"}
+res, err := edlib.FuzzySearchSetThreshold("testnig", strList, 3, 0.5, edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Result for 'testnig' with '0.5' threshold: %s", strings.Join(res, " "))
+}
+
+res, err = edlib.FuzzySearchSetThreshold("testnig", strList, 3, 0.7, edlib.Levenshtein)
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("Result for 'testnig' with '0.7' threshold: %s", strings.Join(res, " "))
+}
+
+```
+
+``` 
+Result for 'testnig' with '0.5' threshold: testing test tester
+Result for 'testnig' with '0.7' threshold: testing
+```
+
+### Get raw edit distance (Levenshtein, LCS, Damerau–Levenshtein, Hamming)
+
+You can use one of the following function to get an edit distance between two strings :
+- [LevenshteinDistance](https://pkg.go.dev/github.com/hbollon/go-edlib#LevenshteinDistance)(str1, str2)
+- [DamerauLevenshteinDistance](https://pkg.go.dev/github.com/hbollon/go-edlib#DamerauLevenshteinDistance)(str1, str2)
+- [OSADamerauLevenshteinDistance](https://pkg.go.dev/github.com/hbollon/go-edlib#OSADamerauLevenshteinDistance)(str1, str2)
+- [LCSEditDistance](https://pkg.go.dev/github.com/hbollon/go-edlib#LCSEditDistance)(str1, str2)
+- [HammingDistance](https://pkg.go.dev/github.com/hbollon/go-edlib#HammingDistance)(str1, str2)
+
+Example with Levenshtein distance:
+```go
+res := edlib.LevenshteinDistance("kitten", "sitting")
+fmt.Printf("Result: %d", res)
+```
+
+```
+Result: 3
+```
+
+### LCS, LCS Backtrack and LCS Diff
+#### 1. Compute LCS(Longuest Common Subsequence) between two strings
+
+You can use ``` LCS(str1, str2) ``` function.
+
+```go
+lcs := edlib.LCS("ABCD", "ACBAD")
+fmt.Printf("Length of their LCS: %d", lcs)
+```
+
+```
+Length of their LCS: 3
+```
+
+#### 2. Backtrack their LCS
+
+You can use ``` LCSBacktrack(str1, str2) ``` function.
+
+```go
+res, err := edlib.LCSBacktrack("ABCD", "ACBAD")
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("LCS: %s", res)
+}
+```
+
+```
+LCS: ABD
+```
+
+#### 3. Backtrack all their LCS
+
+You can use ``` LCSBacktrackAll(str1, str2) ``` function.
+
+```go
+res, err := edlib.LCSBacktrackAll("ABCD", "ACBAD")
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("LCS: %s", strings.Join(res, ", "))
+}
+```
+
+```
+LCS: ABD, ACD
+```
+
+#### 4. Get LCS Diff between two strings
+
+You can use ``` LCSDiff(str1, str2) ``` function.
+
+```go
+res, err := edlib.LCSDiff("computer", "houseboat")
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("LCS: \n%s\n%s", res[0], res[1])
+}
+```
+
+```
+LCS Diff: 
+ h c o m p u s e b o a t e r
+ + -   - -   + + + + +   - -
+```
 
 ## Author
 
