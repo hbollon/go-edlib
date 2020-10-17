@@ -433,13 +433,15 @@
     --- PASS: TestFuzzySearchSet/FuzzySearch_'testing'_err (0.00s)
 === RUN   TestFuzzySearchSetThreshold
 === RUN   TestFuzzySearchSetThreshold/FuzzySearch_'testing'
+=== RUN   TestFuzzySearchSetThreshold/FuzzySearch_'testing'#01
 === RUN   TestFuzzySearchSetThreshold/FuzzySearch_'testing'_err
 --- PASS: TestFuzzySearchSetThreshold (0.00s)
     --- PASS: TestFuzzySearchSetThreshold/FuzzySearch_'testing' (0.00s)
+    --- PASS: TestFuzzySearchSetThreshold/FuzzySearch_'testing'#01 (0.00s)
     --- PASS: TestFuzzySearchSetThreshold/FuzzySearch_'testing'_err (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	github.com/hbollon/go-edlib	0.049s	coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib	0.059s	coverage: 100.0% of statements
 === RUN   TestOrderedMap_Len
 === RUN   TestOrderedMap_Len/OrderedMap_Len
 --- PASS: TestOrderedMap_Len (0.00s)
@@ -464,7 +466,7 @@ ok  	github.com/hbollon/go-edlib	0.049s	coverage: 100.0% of statements
     --- PASS: TestOrderedMap_SortByValues/OrderedMap_SortByValues (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.046s	coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.028s	coverage: 100.0% of statements
 === RUN   TestMin
 === RUN   TestMin/Min_between_2/4
 === RUN   TestMin/Min_between_-25/-42
@@ -501,7 +503,7 @@ ok  	github.com/hbollon/go-edlib/internal/orderedmap	0.046s	coverage: 100.0% of 
     --- PASS: TestStringHashMap_ToArray/ToString()_hashMapB (0.00s)
 PASS
 coverage: 100.0% of statements
-ok  	github.com/hbollon/go-edlib/internal/utils	0.026s	coverage: 100.0% of statements
+ok  	github.com/hbollon/go-edlib/internal/utils	0.027s	coverage: 100.0% of statements
 testing: warning: no tests to run
 PASS
 coverage: [no statements]

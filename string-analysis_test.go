@@ -251,6 +251,7 @@ func TestFuzzySearchSetThreshold(t *testing.T) {
 		wantErr bool
 	}{
 		{"FuzzySearch 'testing'", args{"testnig", strList, 3, 0.7, Levenshtein}, []string{"testing", "", ""}, false},
+		{"FuzzySearch 'testing'", args{"testnig", strList, 3, 0.5, Levenshtein}, []string{"testing", "test", "tester"}, false},
 		{"FuzzySearch 'testing' err", args{"testnig", strList, 3, 0.7, Hamming}, nil, true},
 	}
 	for _, tt := range tests {

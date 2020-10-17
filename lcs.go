@@ -7,7 +7,7 @@ import (
 	"github.com/hbollon/go-edlib/internal/utils"
 )
 
-// LCS takes two strings and compute their LCS(Longuest Subsequence Problem)
+// LCS takes two strings and compute their LCS(Longuest Common Subsequence)
 func LCS(str1, str2 string) int {
 	// Convert strings to rune array to handle no-ASCII characters
 	runeStr1 := []rune(str1)
