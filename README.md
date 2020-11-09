@@ -106,23 +106,16 @@ go test ./... # Add desired parameters to this command if you want
 You can use ``` StringSimilarity(str1, str2, algorithm) ``` function.
 **algorithm** parameter must one of the following constants: 
 ```go
+// Algorithm identifiers
 const (
-	// Levenshtein algo identifier
 	Levenshtein Algorithm = iota
-	// DamerauLevenshtein algo identifier
-	DamerauLevenshtein Algorithm = iota
-	// OSADamerauLevenshtein algo identifier
-	OSADamerauLevenshtein Algorithm = iota
-	// Lcs algo identifier
-	Lcs Algorithm = iota
-	// Hamming algo identifier
-	Hamming Algorithm = iota
-	// Jaro algo identifier
-	Jaro Algorithm = iota
-	// JaroWinkler algo identifier
-	JaroWinkler Algorithm = iota
-	// Cosine algo identifier
-	Cosine Algorithm = iota
+	DamerauLevenshtein
+	OSADamerauLevenshtein
+	Lcs
+	Hamming
+	Jaro
+	JaroWinkler
+	Cosine
 )
 ```
 

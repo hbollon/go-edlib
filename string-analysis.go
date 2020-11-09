@@ -9,23 +9,16 @@ import (
 // Algorithm is an Integer type used to identify edit distance algorithms
 type Algorithm uint8
 
+// Algorithm identifiers
 const (
-	// Levenshtein algo identifier
 	Levenshtein Algorithm = iota
-	// DamerauLevenshtein algo identifier
-	DamerauLevenshtein Algorithm = iota
-	// OSADamerauLevenshtein algo identifier
-	OSADamerauLevenshtein Algorithm = iota
-	// Lcs algo identifier
-	Lcs Algorithm = iota
-	// Hamming algo identifier
-	Hamming Algorithm = iota
-	// Jaro algo identifier
-	Jaro Algorithm = iota
-	// JaroWinkler algo identifier
-	JaroWinkler Algorithm = iota
-	// Cosine algo identifier
-	Cosine Algorithm = iota
+	DamerauLevenshtein
+	OSADamerauLevenshtein
+	Lcs
+	Hamming
+	Jaro
+	JaroWinkler
+	Cosine
 )
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
