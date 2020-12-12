@@ -51,6 +51,8 @@ func TestLCSBacktrack(t *testing.T) {
 		{"ABCDGH/AEDFHR", args{"ABCDGH", "AEDFHR"}, "ADH", false},
 		{"AGGTAB/GXTXAYB", args{"AGGTAB", "GXTXAYB"}, "GTAB", false},
 		{"XMJYAUZ/MZJAWXU", args{"XMJYAUZ", "MZJAWXU"}, "MJAU", false},
+		{"XMJYAUZ/MZJAWXU", args{"XMJYAUZ", "MZJAWXU"}, "MJAU", false},
+		{"你好先生/你好夫人", args{"你好先生", "你好夫人"}, "你好", false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -86,6 +88,7 @@ func TestLCSBacktrackAll(t *testing.T) {
 		{"XMJYAUZ/MZJAWXU", args{"XMJYAUZ", "MZJAWXU"}, []string{"MJAU"}, false},
 		{"AZBYCWDX/ZAYBWCXD", args{"AZBYCWDX", "ZAYBWCXD"}, []string{"ABCD", "ABCX", "ABWD", "ABWX", "AYCD", "AYCX", "AYWD", "AYWX", "ZBCD", "ZBCX", "ZBWD", "ZBWX", "ZYCD", "ZYCX", "ZYWD", "ZYWX"}, false},
 		{"AATCC/ACACG", args{"AATCC", "ACACG"}, []string{"AAC", "ACC"}, false},
+		{"您好女士，你好吗？/先生，你好吗？", args{"您好女士 你好吗？", "先生 你好吗？"}, []string{" 你好吗？"}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -118,6 +121,7 @@ func TestLCSDiff(t *testing.T) {
 		{"empty/AB", args{"", "AB"}, nil, true},
 		{"AB/AB", args{"AB", "AB"}, []string{"AB"}, false},
 		{"computer/houseboat", args{"computer", "houseboat"}, []string{" h c o m p u s e b o a t e r", " + -   - -   + + + + +   - -"}, false},
+		{"您好女士，你好吗？/先生，你好吗？", args{"您好女士 你好吗？", "先生 你好吗？"}, []string{" 先 生 您 好 女 士   你 好 吗 ？", " + + - - - -          "}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
