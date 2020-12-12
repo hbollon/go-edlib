@@ -2,7 +2,6 @@ package edlib
 
 import (
 	"errors"
-	"fmt"
 
 	"github.com/hbollon/go-edlib/internal/utils"
 )
@@ -129,7 +128,6 @@ func LCSDiff(str1, str2 string) ([]string, error) {
 	}
 
 	diff := processLCSDiff(str1, str2, lcsProcess(runeStr1, runeStr2), len(str1), len(str2))
-	fmt.Printf("%v\n", diff)
 	return diff, nil
 }
 
