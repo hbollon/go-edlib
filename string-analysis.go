@@ -52,11 +52,14 @@ func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error
 
 // Return matching index E [0..1] from two strings and an edit distance
 func matchingIndex(str1 string, str2 string, distance int) float32 {
-	// Compare strings length and make a matching percentage between them
-	if len(str1) >= len(str2) {
-		return float32(len(str1)-distance) / float32(len(str1))
+	// Convert strings to rune slices
+	runeStr1 := []rune(str1)
+	runeStr2 := []rune(str2)
+	// Compare rune arrays length and make a matching percentage between them
+	if len(runeStr1) >= len(runeStr2) {
+		return float32(len(runeStr1)-distance) / float32(len(runeStr1))
 	}
-	return float32(len(str2)-distance) / float32(len(str2))
+	return float32(len(runeStr2)-distance) / float32(len(runeStr2))
 }
 
 // FuzzySearch realize an approximate search on a string list and return the closest one compared

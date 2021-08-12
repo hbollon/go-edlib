@@ -40,6 +40,10 @@ func TestStringsSimilarity(t *testing.T) {
 		{"Levenshtein : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Levenshtein}, 0.6666667, false},
 		{"Levenshtein : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Levenshtein}, 0.50, false},
 		{"Levenshtein : jellyfish/smellyfish", args{"jellyfish", "smellyfish", Levenshtein}, 0.80, false},
+		{"Levenshtein : abcde/бвгдж", args{"abcde", "бвгдж", Levenshtein}, 0, false},
+		{"Levenshtein : abcde/fghjk", args{"abcde", "fghjk", Levenshtein}, 0, false},
+		{"Levenshtein : こにんち/こんにちは", args{"こにんち", "こんにちは", Levenshtein}, 0.4, false},
+		{"Levenshtein : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", Levenshtein}, 0.5, false},
 
 		// DamerauLevenshtein method
 		{"DamerauLevenshtein : First arg empty", args{"", "abcde", DamerauLevenshtein}, 0.0, false},
@@ -52,8 +56,8 @@ func TestStringsSimilarity(t *testing.T) {
 		{"DamerauLevenshtein : a cat/an abct", args{"a cat", "an abct", DamerauLevenshtein}, 0.5714286, false},
 		{"DamerauLevenshtein : dixon/dicksonx", args{"dixon", "dicksonx", DamerauLevenshtein}, 0.5, false},
 		{"DamerauLevenshtein : jellyfish/smellyfish", args{"jellyfish", "smellyfish", DamerauLevenshtein}, 0.8, false},
-		{"DamerauLevenshtein : こにんち/こんにちは", args{"こにんち", "こんにちは", DamerauLevenshtein}, 0.8666667, false}, // "Hello" in Japanese
-		{"DamerauLevenshtein : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", DamerauLevenshtein}, 0.875, false},
+		{"DamerauLevenshtein : こにんち/こんにちは", args{"こにんち", "こんにちは", DamerauLevenshtein}, 0.6, false},
+		{"DamerauLevenshtein : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", DamerauLevenshtein}, 0.5, false},
 
 		// OSADamerauLevenshtein method
 		{"OSADamerauLevenshtein : First arg empty", args{"", "abcde", OSADamerauLevenshtein}, 0.0, false},
@@ -66,8 +70,8 @@ func TestStringsSimilarity(t *testing.T) {
 		{"OSADamerauLevenshtein : a cat/an abct", args{"a cat", "an abct", OSADamerauLevenshtein}, 0.428571429, false},
 		{"OSADamerauLevenshtein : dixon/dicksonx", args{"dixon", "dicksonx", OSADamerauLevenshtein}, 0.5, false},
 		{"OSADamerauLevenshtein : jellyfish/smellyfish", args{"jellyfish", "smellyfish", OSADamerauLevenshtein}, 0.8, false},
-		{"OSADamerauLevenshtein : こにんち/こんにちは", args{"こにんち", "こんにちは", OSADamerauLevenshtein}, 0.8666667, false}, // "Hello" in Japanese
-		{"OSADamerauLevenshtein : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", OSADamerauLevenshtein}, 0.875, false},
+		{"OSADamerauLevenshtein : こにんち/こんにちは", args{"こにんち", "こんにちは", OSADamerauLevenshtein}, 0.6, false},
+		{"OSADamerauLevenshtein : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", OSADamerauLevenshtein}, 0.5, false},
 
 		// Lcs method
 		{"LCS : First arg empty", args{"", "abcde", Lcs}, 0.0, false},
@@ -80,6 +84,8 @@ func TestStringsSimilarity(t *testing.T) {
 		{"LCS : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Lcs}, 0.6666667, false},
 		{"LCS : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Lcs}, 0.375, false},
 		{"LCS : jellyfish/smellyfish", args{"jellyfish", "smellyfish", Lcs}, 0.7, false},
+		{"Lcs : こにんち/こんにちは", args{"こにんち", "こんにちは", Lcs}, 0.4, false}, // "Hello" in Japanese
+		{"Lcs : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", Lcs}, 0.5, false},
 
 		// Hamming method
 		{"Hamming : First arg empty", args{"", "abcde", Hamming}, 0.0, true},
@@ -93,7 +99,7 @@ func TestStringsSimilarity(t *testing.T) {
 		{"Hamming : dixon/dicksonx", args{"dixon", "dicksonx", Hamming}, 0.0, true},
 		{"Hamming : jellyfish/smellyfish", args{"jellyfish", "smellyfish", Hamming}, 0.0, true},
 		{"Hamming : こにんち/こんにちは", args{"こにんち", "こんにちは", Hamming}, 0.0, true}, // "Hello" in Japanese
-		{"Hamming : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", Hamming}, 0.75, false},
+		{"Hamming : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", Hamming}, 0.0, false},
 
 		// Jaro method
 		{"Jaro : First arg empty", args{"", "abcde", Jaro}, 0.0, false},
@@ -104,6 +110,9 @@ func TestStringsSimilarity(t *testing.T) {
 		{"Jaro : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Jaro}, 0.9444444, false},
 		{"Jaro : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Jaro}, 0.76666665, false},
 		{"Jaro : jellyfish/smellyfish", args{"jellyfish", "smellyfish", Jaro}, 0.8962963, false},
+		{"Jaro : こにんち/こんにちは", args{"こにんち", "こんにちは", Jaro}, 0.84999996, false},
+		{"Jaro : こんににんち/こんにちは", args{"こんににんち", "こんにちは", Jaro}, 0.82222223, false},
+		{"Jaro : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", Jaro}, 0.8333333, false},
 
 		// JaroWinkler method
 		{"JaroWinkler : First arg empty", args{"", "abcde", JaroWinkler}, 0.0, false},
@@ -114,6 +123,9 @@ func TestStringsSimilarity(t *testing.T) {
 		{"JaroWinkler : MARTHA/MARHTA", args{"MARTHA", "MARHTA", JaroWinkler}, 0.96111107, false},
 		{"JaroWinkler : DIXON/DICKSONX", args{"DIXON", "DICKSONX", JaroWinkler}, 0.81333333, false},
 		{"JaroWinkler : jellyfish/smellyfish", args{"jellyfish", "smellyfish", JaroWinkler}, 0.8962963, false},
+		{"JaroWinkler : こにんち/こんにちは", args{"こにんち", "こんにちは", JaroWinkler}, 0.86499995, false},
+		{"JaroWinkler : こんににんち/こんにちは", args{"こんににんち", "こんにちは", JaroWinkler}, 0.8755556, false},
+		{"JaroWinkler : 🙂😄🙂😄/😄🙂😄🙂", args{"🙂😄🙂😄", "😄🙂😄🙂", JaroWinkler}, 0.8333333, false},
 
 		// Cosine method
 		{"Cosine : First arg empty", args{"", "abcde", Cosine}, 0.0, false},
@@ -138,7 +150,7 @@ func TestStringsSimilarity(t *testing.T) {
 				return
 			}
 			if got != tt.want {
-				t.Errorf("StringsSimilarity() = %v, want %v", got, tt.want)
+				t.Errorf("StringsSimilarity() = %v, want %v\nRune string 1: %v, len: %d\nRune string 2: %v, len: %d", got, tt.want, []rune(tt.args.str1), len([]rune(tt.args.str1)), []rune(tt.args.str2), len([]rune(tt.args.str2)))
 			}
 		})
 	}

@@ -89,6 +89,7 @@ func TestLCSBacktrackAll(t *testing.T) {
 		{"AZBYCWDX/ZAYBWCXD", args{"AZBYCWDX", "ZAYBWCXD"}, []string{"ABCD", "ABCX", "ABWD", "ABWX", "AYCD", "AYCX", "AYWD", "AYWX", "ZBCD", "ZBCX", "ZBWD", "ZBWX", "ZYCD", "ZYCX", "ZYWD", "ZYWX"}, false},
 		{"AATCC/ACACG", args{"AATCC", "ACACG"}, []string{"AAC", "ACC"}, false},
 		{"您好女士，你好吗？/先生，你好吗？", args{"您好女士 你好吗？", "先生 你好吗？"}, []string{" 你好吗？"}, false},
+		{" 是ab是cde22f123g/222222是ab是cd123", args{" 是ab是cde22f123g", "222222是ab是cd123"}, []string{"是ab是cd123"}, false},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
