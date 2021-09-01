@@ -143,7 +143,7 @@ func TestStringsSimilarity(t *testing.T) {
 		{"Jaccard : First arg empty", args{"", "abcde", Jaccard}, 0.0, false},
 		{"Jaccard : Second arg empty", args{"abcde", "", Jaccard}, 0.0, false},
 		{"Jaccard : Same args", args{"abcde", "abcde", Jaccard}, 1.0, false},
-		{"Jaccard : No characters match", args{"abcd", "effgghh", Cosine}, 0.0, false},
+		{"Jaccard : No characters match", args{"abcd", "effgghh", Jaccard}, 0.0, false},
 		{"Jaccard : CRATE/TRACE", args{"CRATE", "TRACE", Jaccard}, 0.0, false},
 		{"Jaccard : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Jaccard}, 0.0, false},
 		{"Jaccard : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Jaccard}, 0.0, false},
