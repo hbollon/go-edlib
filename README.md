@@ -1,20 +1,14 @@
 <h1 align="center">Go-edlib : Edit distance and string comparison library</h1>
 
 <p align="center">
-  <a href="https://travis-ci.org/github/hbollon/go-edlib" target="_blank">
-    <img alt="Travis CI" src="https://travis-ci.org/hbollon/go-edlib.svg?branch=master" />
-  </a>
-  <a href="https://codecov.io/gh/hbollon/go-edlib">
-    <img alt="Test coverage" src="https://codecov.io/gh/hbollon/go-edlib/branch/master/graph/badge.svg" />
+  <a href='https://coveralls.io/github/hbollon/go-edlib?branch=master'>
+    <img src='https://coveralls.io/repos/github/hbollon/go-edlib/badge.svg?branch=master' alt='Coverage Status' />
   </a>
   <a href="https://goreportcard.com/report/github.com/hbollon/go-edlib" target="_blank">
     <img alt="Go Report Card" src="https://goreportcard.com/badge/github.com/hbollon/go-edlib" />
   </a>
   <a href="https://github.com/hbollon/go-edlib/blob/master/LICENSE.md" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
-  </a>
-  <a href="https://godoc.org/github.com/hbollon/go-edlib" target="_blank">
-    <img alt="Documentation link" src="https://godoc.org/github.com/hbollon/go-edlib?status.svg" />
   </a>
   <a href="https://pkg.go.dev/github.com/hbollon/go-edlib" target="_blank">
     <img src="https://pkg.go.dev/badge/github.com/hbollon/go-edlib" alt="PkgGoDev">
@@ -58,6 +52,7 @@ This library is 100% test covered 😁
     - Adjacent transpositions ✨
 - [Jaro & Jaro-Winkler](https://fr.wikipedia.org/wiki/Distance_de_Jaro-Winkler) similarity algorithms ✨
 - [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) algorithm to compare strings ✨
+- [Jaccard Index](https://en.wikipedia.org/wiki/Jaccard_index) ✨
 
 - Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨
 - Fuzzy search functions based on edit distance with unique or multiples strings output ✨
