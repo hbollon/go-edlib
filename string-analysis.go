@@ -19,6 +19,7 @@ const (
 	Jaro
 	JaroWinkler
 	Cosine
+	Jaccard
 )
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
@@ -45,6 +46,8 @@ func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error
 		return JaroWinklerSimilarity(str1, str2), nil
 	case Cosine:
 		return CosineSimilarity(str1, str2), nil
+	case Jaccard:
+		return JaccardSimilarity(str1, str2), nil
 	default:
 		return 0.0, errors.New("Illegal argument for algorithm method")
 	}

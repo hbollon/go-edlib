@@ -139,6 +139,20 @@ func TestStringsSimilarity(t *testing.T) {
 		{"Cosine : Sentence 2", args{"I love horror movies", "Lights out is a horror movie", Cosine}, 0.20412414, false},
 		{"Cosine : Sentence 3", args{"love horror movies", "Lights out horror movie", Cosine}, 0.28867513, false},
 
+		// Jaccard method
+		{"Jaccard : First arg empty", args{"", "abcde", Jaccard}, 0.0, false},
+		{"Jaccard : Second arg empty", args{"abcde", "", Jaccard}, 0.0, false},
+		{"Jaccard : Same args", args{"abcde", "abcde", Jaccard}, 1.0, false},
+		{"Jaccard : No characters match", args{"abcd", "effgghh", Jaccard}, 0.0, false},
+		{"Jaccard : CRATE/TRACE", args{"CRATE", "TRACE", Jaccard}, 0.0, false},
+		{"Jaccard : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Jaccard}, 0.0, false},
+		{"Jaccard : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Jaccard}, 0.0, false},
+		{"Jaccard : Sentence 1", args{"Radiohead", "Carly Rae Jepsen", Jaccard}, 0.0, false},
+		{"Jaccard : Sentence 2", args{"I love horror movies", "Lights out is a horror movie", Jaccard}, 1.0 / 9.0, false},
+		{"Jaccard : Sentence 3", args{"love horror movies", "Lights out horror movie", Jaccard}, 1.0 / 6.0, false},
+		{"Jaccard : Sentence 4", args{"私の名前はジョンです", "私の名前はジョン・ドゥです", Jaccard}, 0.0, false},
+		{"Jaccard : Sentence 5", args{"🙂😄🙂😄 😄🙂😄", "🙂😄🙂😄 😄🙂😄 🙂😄🙂", Jaccard}, 2.0 / 3.0, false},
+
 		// Illegal argument error
 		{"Undefined integer value for method", args{"abc", "abcde", 42}, 0.0, true},
 	}
