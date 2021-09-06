@@ -70,22 +70,18 @@ func Test_find(t *testing.T) {
 		val   []rune
 	}
 	tests := []struct {
-		name  string
-		args  args
-		want  int
-		want1 bool
+		name string
+		args args
+		want int
 	}{
-		{"Find function test true", args{[][]rune{{97}, {98}, {100}, {101}}, []rune{101}}, 3, true},
-		{"Find function test false", args{[][]rune{{97}, {98}, {100}, {101}}, []rune{102}}, -1, false},
+		{"Find function test true", args{[][]rune{{97}, {98}, {100}, {101}}, []rune{101}}, 3},
+		{"Find function test false", args{[][]rune{{97}, {98}, {100}, {101}}, []rune{102}}, -1},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, got1 := find(tt.args.slice, tt.args.val)
+			got := find(tt.args.slice, tt.args.val)
 			if got != tt.want {
 				t.Errorf("find() got = %v, want %v", got, tt.want)
-			}
-			if got1 != tt.want1 {
-				t.Errorf("find() got1 = %v, want %v", got1, tt.want1)
 			}
 		})
 	}
@@ -106,27 +102,6 @@ func Test_sum(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := sum(tt.args.arr); got != tt.want {
 				t.Errorf("sum() = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
-
-func Test_dot(t *testing.T) {
-	type args struct {
-		vect1 []int
-		vect2 []int
-	}
-	tests := []struct {
-		name string
-		args args
-		want float32
-	}{
-		{"Dot function test", args{[]int{10, 40, 3}, []int{2, 20, 5}}, 835.0},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := dot(tt.args.vect1, tt.args.vect2); got != tt.want {
-				t.Errorf("dot() = %v, want %v", got, tt.want)
 			}
 		})
 	}

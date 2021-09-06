@@ -45,8 +45,8 @@ func (m StringHashMap) AddAll(srcMap StringHashMap) {
 
 // ToArray convert and return an StringHashMap to string array
 func (m StringHashMap) ToArray() []string {
-	var arr []string
 	var index int
+	arr := make([]string, 0, len(m))
 	for key := range m {
 		arr = append(arr, key)
 		index++

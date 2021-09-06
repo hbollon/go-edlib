@@ -29,15 +29,15 @@ func CosineSimilarity(str1, str2 string) float32 {
 	// Create union keywords slice between input strings
 	unionStr := union(splittedStr1, splittedStr2)
 	for _, word := range unionStr {
-		_, fw := find(runeStr1, word)
-		if fw {
+		fw := find(runeStr1, word)
+		if fw != -1 {
 			l1 = append(l1, 1)
 		} else {
 			l1 = append(l1, 0)
 		}
 
-		_, fw = find(runeStr2, word)
-		if fw {
+		fw = find(runeStr2, word)
+		if fw != -1 {
 			l2 = append(l2, 1)
 		} else {
 			l2 = append(l2, 0)
@@ -74,14 +74,14 @@ func union(a, b []string) [][]rune {
 }
 
 // Find takes a rune slice and looks for an element in it. If found it will
-// return it's key, otherwise it will return -1 and a bool of false.
-func find(slice [][]rune, val []rune) (int, bool) {
+// return it's key, otherwise it will return -1.
+func find(slice [][]rune, val []rune) int {
 	for i, item := range slice {
 		if utils.Equal(item, val) {
-			return i, true
+			return i
 		}
 	}
-	return -1, false
+	return -1
 }
 
 // Return the elements sum from int slice
@@ -91,13 +91,4 @@ func sum(arr []int) int {
 		res += v
 	}
 	return res
-}
-
-// Compute dot product between two vectors
-func dot(vect1, vect2 []int) float32 {
-	var out float32
-	for i := 0; i < len(vect1); i++ {
-		out += float32(vect1[i] * vect2[i])
-	}
-	return out
 }
