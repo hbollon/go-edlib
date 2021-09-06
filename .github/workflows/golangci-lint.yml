@@ -1,11 +1,7 @@
 name: golangci-lint
-on:
-  push:
-    tags:
-      - v*
-    branches:
-      - master
-  pull_request:
+
+on: [push, pull_request]
+
 jobs:
   golangci:
     name: lint
@@ -15,6 +11,4 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v2
         with:
-          version: v1.29
-          args: -E golint -E goimports -E gofmt --issues-exit-code=0
-          only-new-issues: true
+          version: v1.42.0
