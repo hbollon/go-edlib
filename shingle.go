@@ -32,7 +32,5 @@ func ShingleSlidingWindow(s string, k int) map[string]int {
 			m[string(window)]++
 		}
 	}
-
 	return m
-
 }
