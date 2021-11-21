@@ -24,6 +24,7 @@ const (
 
 // StringsSimilarity return a similarity index [0..1] between two strings based on given edit distance algorithm in parameter.
 // Use defined Algorithm type.
+// Through this function, Cosine and Jaccard algorithms are used with Shingle split method with a length of 2.
 func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error) {
 	switch algo {
 	case Levenshtein:
@@ -45,9 +46,9 @@ func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error
 	case JaroWinkler:
 		return JaroWinklerSimilarity(str1, str2), nil
 	case Cosine:
-		return CosineSimilarity(str1, str2), nil
+		return CosineSimilarity(str1, str2, 2), nil
 	case Jaccard:
-		return JaccardSimilarity(str1, str2), nil
+		return JaccardSimilarity(str1, str2, 2), nil
 	default:
 		return 0.0, errors.New("Illegal argument for algorithm method")
 	}

@@ -8,12 +8,24 @@ import (
 )
 
 // CosineSimilarity use cosine algorithm to return a similarity index between string vectors
-// Takes two strings as parameters and return an index.
-// This algorithm is only effective between sentences and not unique words.
-func CosineSimilarity(str1, str2 string) float32 {
+// Takes two strings as parameters, a split length which define the k-gram single length
+// (if zero split string on whitespaces) and return an index.
+func CosineSimilarity(str1, str2 string, splitLength int) float32 {
+	if str1 == "" || str2 == "" {
+		return 0
+	}
+
 	// Split string before rune conversion for cosine calculation
-	splittedStr1 := strings.Split(str1, " ")
-	splittedStr2 := strings.Split(str2, " ")
+	// If splitLength == 0 then split on whitespaces
+	// Else use shingle algorithm
+	var splittedStr1, splittedStr2 []string
+	if splitLength == 0 {
+		splittedStr1 = strings.Split(str1, " ")
+		splittedStr2 = strings.Split(str2, " ")
+	} else {
+		splittedStr1 = ShingleSlice(str1, splitLength)
+		splittedStr2 = ShingleSlice(str2, splitLength)
+	}
 
 	// Conversion of plitted string into rune array
 	runeStr1 := make([][]rune, len(splittedStr1))
