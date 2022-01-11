@@ -13,7 +13,7 @@ func TestQGramSimilarity(t *testing.T) {
 	tests := []struct {
 		name string
 		args args
-		want float32
+		want int
 	}{
 		{"Qgram sim 1", args{"Radiohead", "Radiohead", 2}, 0.0},
 		{"Qgram sim 2", args{"ABCD", "ABCE", 2}, 2.0},
@@ -27,7 +27,7 @@ func TestQGramSimilarity(t *testing.T) {
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := QgramSimilarity(tt.args.str1, tt.args.str2, tt.args.splitLength); got != tt.want {
+			if got := QgramDistance(tt.args.str1, tt.args.str2, tt.args.splitLength); got != tt.want {
 				t.Errorf("QgramSimilarity() = %v, want %v", got, tt.want)
 			}
 		})
