@@ -44,20 +44,21 @@ Designed to be fully compatible with Unicode characters!<br>
 This library is 100% test covered 😁
 
 ## Features
-- [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance) ✨
-- [LCS](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) (Longest common subsequence) with edit distance, backtrack and diff functions ✨
-- [Hamming](https://en.wikipedia.org/wiki/Hamming_distance) ✨
-- [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance), with following variants :
-    - OSA (Optimal string alignment) ✨
-    - Adjacent transpositions ✨
-- [Jaro & Jaro-Winkler](https://fr.wikipedia.org/wiki/Distance_de_Jaro-Winkler) similarity algorithms ✨
-- [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity) algorithm to compare strings ✨
-- [Jaccard Index](https://en.wikipedia.org/wiki/Jaccard_index) ✨
 
-- Computed similarity percentage functions based on all available edit distance algorithms in this lib ✨
-- Fuzzy search functions based on edit distance with unique or multiples strings output ✨
-- Unicode compatibility ! 🥳
-- And many more to come !
+- [Levenshtein](https://en.wikipedia.org/wiki/Levenshtein_distance)
+- [LCS](https://en.wikipedia.org/wiki/Longest_common_subsequence_problem) (Longest common subsequence) with edit distance, backtrack and diff functions
+- [Hamming](https://en.wikipedia.org/wiki/Hamming_distance)
+- [Damerau-Levenshtein](https://en.wikipedia.org/wiki/Damerau%E2%80%93Levenshtein_distance), with following variants:
+  - OSA (Optimal string alignment)
+  - Adjacent transpositions
+- [Jaro & Jaro-Winkler](https://en.wikipedia.org/wiki/Jaro%E2%80%93Winkler_distance) similarity algorithms
+- [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity)
+- [Jaccard Index](https://en.wikipedia.org/wiki/Jaccard_index)
+- [QGram](https://en.wikipedia.org/wiki/N-gram)
+- [Sorensen-Dice](https://en.wikipedia.org/wiki/S%C3%B8rensen%E2%80%93Dice_coefficient)
+- Computed similarity percentage functions based on all available edit distance algorithms in this lib
+- Fuzzy search functions based on edit distance with unique or multiples strings output
+- Unicode compatibility 🥳
 
 ## Benchmarks
 You can check an interactive Google chart with few benchmark cases for all similarity algorithms in this library through **StringsSimilarity** function [here](http://benchgraph.codingberg.com/q5)

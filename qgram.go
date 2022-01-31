@@ -27,7 +27,7 @@ func QgramDistance(str1, str2 string, splitLength int) int {
 	return res
 }
 
-// QgramDistanceCustomNgram compute the q-gram similarity between two custom n-gram
+// QgramDistanceCustomNgram compute the q-gram similarity between two custom set of individuals
 // Takes two n-gram map as parameters
 func QgramDistanceCustomNgram(splittedStr1, splittedStr2 map[string]int) int {
 	union := make(map[string]int)
