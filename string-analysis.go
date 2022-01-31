@@ -54,7 +54,7 @@ func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error
 	case SorensenDice:
 		return SorensenDiceCoefficient(str1, str2, 2), nil
 	case Qgram:
-		return matchingIndex(str1, str2, QgramDistance(str1, str2, 2)), nil
+		return QgramSimilarity(str1, str2, 2), nil
 	default:
 		return 0.0, errors.New("Illegal argument for algorithm method")
 	}

@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestQGramSimilarity(t *testing.T) {
+func TestQgramDistance(t *testing.T) {
 	type args struct {
 		str1        string
 		str2        string
@@ -28,7 +28,7 @@ func TestQGramSimilarity(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := QgramDistance(tt.args.str1, tt.args.str2, tt.args.splitLength); got != tt.want {
-				t.Errorf("QgramSimilarity() = %v, want %v", got, tt.want)
+				t.Errorf("QgramDistance() = %v, want %v", got, tt.want)
 			}
 		})
 	}

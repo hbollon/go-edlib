@@ -171,23 +171,23 @@ func TestStringsSimilarity(t *testing.T) {
 		{"SorensenDice Sentence 8", args{"🙂😄🙂😄 😄🙂😄", "🙂😄🙂😄 😄🙂😄 🙂😄🙂", SorensenDice}, 0.8888889, false},
 
 		// Qgram method
-		/*
-			{"Qgram: First arg empty", args{"", "abcde", Qgram}, 0.0, false},
-			{"Qgram : Second arg empty", args{"abcde", "", Qgram}, 0.0, false},
-			{"Qgram : Same args", args{"abcde", "abcde", Qgram}, 1.0, false},
-			{"Qgram : No characters match", args{"abcd", "effgghh", Qgram}, 0.0, false},
-			{"Qgram : CRATE/TRACE", args{"CRATE", "TRACE", Qgram}, 0.25, false},
-			{"Qgram : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Qgram}, 0.4, false},
-			{"Qgram : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Qgram}, 0.36363637, false},
-			{"Qgram Sentence 1", args{"Radiohead", "Radiohead", Qgram}, 0.0, false},
-			{"Qgram Sentence 2", args{"ABCD", "ABCE", Qgram}, 2.0, false},
-			{"Qgram Sentence 3", args{"Radiohead", "Carly Rae Jepsen", Qgram}, 21.0, false},
-			{"Qgram Sentence 4", args{"I love horror movies", "Lights out is a horror movie", Qgram}, 22.0, false},
-			{"Qgram Sentence 5", args{"love horror movies", "Lights out horror movie", Qgram}, 15.0, false},
-			{"Qgram Sentence 6", args{"私の名前はジョンです", "私の名前はジョン・ドゥです", Qgram}, 5, false},
-			{"Qgram Sentence 7", args{"🙂😄🙂😄 😄🙂😄", "🙂😄🙂😄 😄🙂😄 🙂😄🙂", Qgram}, 4, false},
-			{"Qgram Sentence 8", args{"", "", Qgram}, 0.0, false},
-		*/
+		{"Qgram: First arg empty", args{"", "abcde", Qgram}, 0.0, false},
+		{"Qgram : Second arg empty", args{"abcde", "", Qgram}, 0.0, false},
+		{"Qgram : Same args", args{"abcde", "abcde", Qgram}, 1.0, false},
+		{"Qgram : No characters match", args{"abcd", "effgghh", Qgram}, 0.0, false},
+		{"Qgram : CRATE/TRACE", args{"CRATE", "TRACE", Qgram}, 0.25, false},
+		{"Qgram : MARTHA/MARHTA", args{"MARTHA", "MARHTA", Qgram}, 0.39999998, false},
+		{"Qgram : DIXON/DICKSONX", args{"DIXON", "DICKSONX", Qgram}, 0.36363637, false},
+		{"Qgram Sentence 1", args{"Radiohead", "Radiohead", Qgram}, 1.0, false},
+		{"Qgram Sentence 2", args{"ABCD", "ABCE", Qgram}, 0.6666666, false},
+		{"Qgram Sentence 3", args{"Radiohead", "Carly Rae Jepsen", Qgram}, 0.04545456, false},
+		{"Qgram Sentence 4", args{"I love horror movies", "Lights out is a horror movie", Qgram}, 0.47619045, false},
+		{"Qgram Sentence 5", args{"love horror movies", "Lights out horror movie", Qgram}, 0.5833334, false},
+		{"Qgram Sentence 6", args{"私の名前はジョンです", "私の名前はジョン・ドゥです", Qgram}, 0.7619048, false},
+		{"Qgram Sentence 7", args{"🙂😄🙂😄 😄🙂😄", "🙂😄🙂😄 😄🙂😄 🙂😄🙂", Qgram}, 0.5555556, false},
+
+		// TODO: Must refactor compare method to handle NaN values
+		// {"Qgram Sentence 8", args{"", "", Qgram}, float32(math.NaN()), false},
 
 		// Illegal argument error
 		{"Undefined integer value for method", args{"abc", "abcde", 42}, 0.0, true},
