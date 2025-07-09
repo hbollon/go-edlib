@@ -1,6 +1,6 @@
 package edlib
 
-import "github.com/hbollon/go-edlib/internal/utils"
+import "github.com/tilotech/go-edlib/internal/utils"
 
 // JaroSimilarity return a similarity index (between 0 and 1)
 // It use Jaro distance algorithm and allow only transposition operation

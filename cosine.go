@@ -4,7 +4,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/hbollon/go-edlib/internal/utils"
+	"github.com/tilotech/go-edlib/internal/utils"
 )
 
 // CosineSimilarity use cosine algorithm to return a similarity index between string vectors

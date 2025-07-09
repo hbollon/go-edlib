@@ -3,7 +3,7 @@ package edlib
 import (
 	"errors"
 
-	"github.com/hbollon/go-edlib/internal/orderedmap"
+	"github.com/tilotech/go-edlib/internal/orderedmap"
 )
 
 // Algorithm is an Integer type used to identify edit distance algorithms

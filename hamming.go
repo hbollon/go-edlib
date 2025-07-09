@@ -3,7 +3,7 @@ package edlib
 import (
 	"errors"
 
-	"github.com/hbollon/go-edlib/internal/utils"
+	"github.com/tilotech/go-edlib/internal/utils"
 )
 
 // HammingDistance calculate the edit distance between two given strings using only substitutions

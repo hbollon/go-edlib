@@ -1,6 +1,6 @@
 package edlib
 
-import "github.com/hbollon/go-edlib/internal/utils"
+import "github.com/tilotech/go-edlib/internal/utils"
 
 // LevenshteinDistance calculate the distance between two string
 // This algorithm allow insertions, deletions and substitutions to change one string to the second
