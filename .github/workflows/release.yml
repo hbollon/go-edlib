@@ -1,0 +1,81 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  prepare-releases:
+    runs-on: ubuntu-latest
+    outputs:
+      releases_created: ${{ steps.release.outputs.releases_created }}
+    steps:
+      - name: Run Release Please
+        uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          config-file: .github/release-please-config.json
+          manifest-file: .github/release-please-manifest.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show Release Please outputs
+        run: |
+          echo "Releases created: ${{ steps.release.outputs.releases_created }}"
+          echo "PRs created: ${{ steps.release.outputs.prs_created }}"
+          if [[ "${{ steps.release.outputs.prs_created }}" == "true" ]]; then
+            echo "✅ Release PRs were created - review and merge them to trigger releases"
+          else
+            echo "ℹ️ No release PRs created (no releasable commits found)"
+          fi
+
+  publish-releases:
+    if: "github.event_name == 'push' && contains(github.event.head_commit.message, 'chore(master): release')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.24"
+
+      - name: Determine which version was released
+        id: version-detect
+        run: |
+          # Check if this is a v2 release by looking at changed files or commit message
+          if [[ "${{ github.event.head_commit.message }}" == *"v2"* ]]; then
+            echo "version=v2" >> $GITHUB_OUTPUT
+            echo "module_path=./v2" >> $GITHUB_OUTPUT
+            echo "🚀 V2 release detected"
+          else
+            echo "version=v1" >> $GITHUB_OUTPUT
+            echo "module_path=." >> $GITHUB_OUTPUT
+            echo "🚀 V1 release detected"
+          fi
+
+      - name: Run tests for released module
+        run: |
+          cd ${{ steps.version-detect.outputs.module_path }}
+          if [[ -f "go.mod" ]]; then
+            echo "Running tests for ${{ steps.version-detect.outputs.version }}..."
+            go mod tidy
+            go test -v --race ./...
+            go mod verify
+            echo "✅ Tests passed for ${{ steps.version-detect.outputs.version }}"
+          else
+            echo "⚠️ No go.mod found in ${{ steps.version-detect.outputs.module_path }}"
+          fi
+
+      - name: Run Release Please to create GitHub releases
+        uses: googleapis/release-please-action@v4
+        with:
+          config-file: .github/release-please-config.json
+          manifest-file: .github/release-please-manifest.json
+          token: ${{ secrets.GITHUB_TOKEN }}
