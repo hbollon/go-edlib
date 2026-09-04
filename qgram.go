@@ -59,5 +59,10 @@ func QgramSimilarity(str1, str2 string, splitLength int) float32 {
 	for _, i := range splittedStr2 {
 		totalShingles += i
 	}
+	// No q-grams on either side: the profiles are identical, so return full
+	// similarity rather than dividing by zero.
+	if totalShingles == 0 {
+		return 1
+	}
 	return 1 - (res / float32(totalShingles))
 }

@@ -33,3 +33,32 @@ func TestQgramDistance(t *testing.T) {
 		})
 	}
 }
+
+func TestQgramSimilarity(t *testing.T) {
+	type args struct {
+		str1        string
+		str2        string
+		splitLength int
+	}
+	tests := []struct {
+		name string
+		args args
+		want float32
+	}{
+		{"identical", args{"abcde", "abcde", 2}, 1.0},
+		{"no match", args{"abcd", "effgghh", 2}, 0.0},
+		// Strings shorter than the shingle length produce no q-grams; identical
+		// inputs must still be fully similar, not NaN.
+		{"identical shorter than k", args{"a", "a", 2}, 1.0},
+		{"both empty", args{"", "", 2}, 1.0},
+		{"identical equal to shorter than k", args{"ab", "ab", 3}, 1.0},
+	}
+
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := QgramSimilarity(tt.args.str1, tt.args.str2, tt.args.splitLength); got != tt.want {
+				t.Errorf("QgramSimilarity() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
