@@ -159,6 +159,9 @@ func TestLCSEditDistance(t *testing.T) {
 		{"ABCDGH/AEDFHR", args{"ABCDGH", "AEDFHR"}, 6},
 		{"AGGTAB/GXTXAYB", args{"AGGTAB", "GXTXAYB"}, 5},
 		{"XMJYAUZ/MZJAWXU", args{"XMJYAUZ", "MZJAWXU"}, 6},
+		// multi-byte runes: distance must be counted in runes, not bytes
+		{"empty/cafe-accent", args{"", "café"}, 4},
+		{"cafe-accent/empty", args{"café", ""}, 4},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
