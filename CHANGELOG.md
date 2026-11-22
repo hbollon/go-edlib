@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.8.0](https://github.com/hbollon/go-edlib/compare/v1.7.0...v1.8.0) (2026-11-22)
+
+
+### Features
+
+* require Go 1.24 and pin toolchain to 1.27.4 ([3609e0d](https://github.com/hbollon/go-edlib/commit/3609e0d3f2925846b5204908115c739de5b7a25a))
+
+
+### Bug Fixes
+
+* **jaro:** round transpositions down and apply Winkler boost only above 0.7 ([#29](https://github.com/hbollon/go-edlib/issues/29)) ([d4b6078](https://github.com/hbollon/go-edlib/commit/d4b607803c1dd6a89b0a577617eb88b20876b14e)), closes [#28](https://github.com/hbollon/go-edlib/issues/28)
+* **lcs:** count LCSEditDistance in runes for empty-string inputs ([#27](https://github.com/hbollon/go-edlib/issues/27)) ([51e5abe](https://github.com/hbollon/go-edlib/commit/51e5abe82344f263f3d98793317b94ee178bbca9))
+
 ## [1.7.0](https://github.com/hbollon/go-edlib/compare/v1.6.0...v1.7.0) (2025-08-19)
 
 
