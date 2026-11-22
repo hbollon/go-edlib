@@ -40,9 +40,8 @@ func JaroSimilarity(str1, str2 string) float32 {
 		return 0.0
 	}
 
-	var t float32
-	var p int
-	// Check for possible translations
+	var t, p int
+	// Count matched characters that are out of order
 	for i := 0; i < runeStr1len; i++ {
 		if str1Table[i] == 1 {
 			for str2Table[p] == 0 {
@@ -54,11 +53,13 @@ func JaroSimilarity(str1, str2 string) float32 {
 			p++
 		}
 	}
+	// Number of transpositions is half the out of order count, rounded down
+	// (integer division, as in Winkler's strcmp95 reference implementation)
 	t /= 2
 
 	return (float32(match)/float32(runeStr1len) +
 		float32(match)/float32(runeStr2len) +
-		(float32(match)-t)/float32(match)) / 3.0
+		float32(match-t)/float32(match)) / 3.0
 }
 
 // JaroWinklerSimilarity return a similarity index (between 0 and 1)
@@ -67,7 +68,8 @@ func JaroWinklerSimilarity(str1, str2 string) float32 {
 	// Get Jaro similarity index between str1 and str2
 	jaroSim := JaroSimilarity(str1, str2)
 
-	if jaroSim != 0.0 && jaroSim != 1.0 {
+	// Winkler's prefix boost only applies when the Jaro similarity is above 0.7
+	if jaroSim > 0.7 && jaroSim != 1.0 {
 		// Convert string parameters to rune arrays to be compatible with non-ASCII
 		runeStr1 := []rune(str1)
 		runeStr2 := []rune(str2)
