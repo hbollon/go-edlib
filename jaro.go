@@ -42,7 +42,7 @@ func JaroSimilarity(str1, str2 string) float32 {
 
 	var t, p int
 	// Count matched characters that are out of order
-	for i := 0; i < runeStr1len; i++ {
+	for i := range runeStr1len {
 		if str1Table[i] == 1 {
 			for str2Table[p] == 0 {
 				p++
