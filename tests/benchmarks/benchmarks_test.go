@@ -38,9 +38,8 @@ func BenchmarkEdlibAlgorithms(tb *testing.B) {
 }
 
 func benchLevensthein(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("Levenshtein_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.Levenshtein)
 		}
 	})
@@ -49,9 +48,8 @@ func benchLevensthein(testPair pair, tb *testing.B) {
 }
 
 func benchLCS(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("LCS_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.Lcs)
 		}
 	})
@@ -60,9 +58,8 @@ func benchLCS(testPair pair, tb *testing.B) {
 }
 
 func benchHamming(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("Hamming_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.Hamming)
 		}
 	})
@@ -71,9 +68,8 @@ func benchHamming(testPair pair, tb *testing.B) {
 }
 
 func benchDamereauLevenshtein(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("DamerauLevenshtein_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.DamerauLevenshtein)
 		}
 	})
@@ -82,9 +78,8 @@ func benchDamereauLevenshtein(testPair pair, tb *testing.B) {
 }
 
 func benchOSADamereauLevenshtein(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("OSADamerauLevenshtein_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.OSADamerauLevenshtein)
 		}
 	})
@@ -93,9 +88,8 @@ func benchOSADamereauLevenshtein(testPair pair, tb *testing.B) {
 }
 
 func benchJaro(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("Jaro_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.Jaro)
 		}
 	})
@@ -104,9 +98,8 @@ func benchJaro(testPair pair, tb *testing.B) {
 }
 
 func benchJaroWinkler(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("JaroWinkler_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.JaroWinkler)
 		}
 	})
@@ -115,9 +108,8 @@ func benchJaroWinkler(testPair pair, tb *testing.B) {
 }
 
 func benchCosine(testPair pair, tb *testing.B) {
-	tb.ResetTimer()
 	tb.Run(fmt.Sprintf("Cosine_%s/%s", testPair.first, testPair.second), func(tb *testing.B) {
-		for i := 0; i < tb.N; i++ {
+		for tb.Loop() {
 			edlib.StringsSimilarity(testPair.first, testPair.second, edlib.Cosine)
 		}
 	})
