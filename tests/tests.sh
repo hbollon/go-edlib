@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script run all unit tests and store coverage output into coverage.out
-# Require go >= 1.13
+# Require go >= 1.24
 
 endpath=$(basename $(pwd))
 if [ $endpath == "tests" ]

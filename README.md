@@ -36,7 +36,7 @@
 ---
 
 ## Requirements
-- [Go](https://golang.org/doc/install) (v1.13+)
+- [Go](https://golang.org/doc/install) (v1.24+)
 
 ## Introduction
 Golang open-source library which includes most (and soon all) edit-distance and string comparision algorithms with some extra! <br>
