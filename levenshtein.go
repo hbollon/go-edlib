@@ -1,6 +1,6 @@
 package edlib
 
-import "github.com/hbollon/go-edlib/internal/utils"
+import "slices"
 
 // LevenshteinDistance calculate the distance between two string
 // This algorithm allow insertions, deletions and substitutions to change one string to the second
@@ -17,7 +17,7 @@ func LevenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if utils.Equal(runeStr1, runeStr2) {
+	} else if slices.Equal(runeStr1, runeStr2) {
 		return 0
 	}
 
@@ -35,10 +35,10 @@ func LevenshteinDistance(str1, str2 string) int {
 			if runeStr1[y-1] != runeStr2[x-1] {
 				i = 1
 			}
-			column[y] = utils.Min(
-				utils.Min(column[y]+1, // insert
-					column[y-1]+1), // delete
-				lastkey+i) // substitution
+			column[y] = min(
+				column[y]+1,   // insert
+				column[y-1]+1, // delete
+				lastkey+i)     // substitution
 			lastkey = oldkey
 		}
 	}
@@ -63,16 +63,16 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if utils.Equal(runeStr1, runeStr2) {
+	} else if slices.Equal(runeStr1, runeStr2) {
 		return 0
 	} else if runeStr1len < runeStr2len {
 		return OSADamerauLevenshteinDistance(str2, str1)
 	}
 
 	// 2D Array
-	row := utils.Min(runeStr1len+1, 3)
+	row := min(runeStr1len+1, 3)
 	matrix := make([][]int, row)
-	for i := 0; i < row; i++ {
+	for i := range row {
 		matrix[i] = make([]int, runeStr2len+1)
 		matrix[i][0] = i
 	}
@@ -91,10 +91,10 @@ func OSADamerauLevenshteinDistance(str1, str2 string) int {
 				count = 1
 			}
 
-			matrix[i%3][j] = utils.Min(utils.Min(matrix[(i-1)%3][j]+1, matrix[i%3][j-1]+1),
+			matrix[i%3][j] = min(matrix[(i-1)%3][j]+1, matrix[i%3][j-1]+1,
 				matrix[(i-1)%3][j-1]+count) // insertion, deletion, substitution
 			if i > 1 && j > 1 && runeStr1[i-1] == runeStr2[j-2] && runeStr1[i-2] == runeStr2[j-1] {
-				matrix[i%3][j] = utils.Min(matrix[i%3][j], matrix[(i-2)%3][j-2]+1) // translation
+				matrix[i%3][j] = min(matrix[i%3][j], matrix[(i-2)%3][j-2]+1) // translation
 			}
 		}
 	}
@@ -117,26 +117,23 @@ func DamerauLevenshteinDistance(str1, str2 string) int {
 		return runeStr2len
 	} else if runeStr2len == 0 {
 		return runeStr1len
-	} else if utils.Equal(runeStr1, runeStr2) {
+	} else if slices.Equal(runeStr1, runeStr2) {
 		return 0
 	}
 
 	// Create alphabet based on input strings
 	da := make(map[rune]int)
-	for i := 0; i < runeStr1len; i++ {
+	for i := range runeStr1len {
 		da[runeStr1[i]] = 0
 	}
-	for i := 0; i < runeStr2len; i++ {
+	for i := range runeStr2len {
 		da[runeStr2[i]] = 0
 	}
 
 	// 2D Array for distance matrix : matrix[0..str1.length+2][0..s2.length+2]
 	matrix := make([][]int, runeStr1len+2)
-	for i := 0; i <= runeStr1len+1; i++ {
+	for i := range matrix {
 		matrix[i] = make([]int, runeStr2len+2)
-		for j := 0; j <= runeStr2len+1; j++ {
-			matrix[i][j] = 0
-		}
 	}
 
 	// Maximum possible distance
@@ -167,13 +164,11 @@ func DamerauLevenshteinDistance(str1, str2 string) int {
 				cost = 1
 			}
 
-			matrix[i+1][j+1] = utils.Min(
-				utils.Min(
-					matrix[i+1][j]+1,  // Addition
-					matrix[i][j+1]+1), // Deletion
-				utils.Min(
-					matrix[i][j]+cost, // Substitution
-					matrix[i1][j1]+(i-i1-1)+1+(j-j1-1))) // Transposition
+			matrix[i+1][j+1] = min(
+				matrix[i+1][j]+1,  // Addition
+				matrix[i][j+1]+1,  // Deletion
+				matrix[i][j]+cost, // Substitution
+				matrix[i1][j1]+(i-i1-1)+1+(j-j1-1)) // Transposition
 		}
 
 		da[runeStr1[i-1]] = i

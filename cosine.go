@@ -4,7 +4,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/hbollon/go-edlib/internal/utils"
+	"slices"
 )
 
 // CosineSimilarity use cosine algorithm to return a similarity index between string vectors
@@ -58,7 +58,7 @@ func CosineSimilarity(str1, str2 string, splitLength int) float32 {
 
 	// Compute cosine algorithm
 	var cosineSim float32
-	for i := 0; i < len(unionStr); i++ {
+	for i := range unionStr {
 		cosineSim += float32(l1[i] * l2[i])
 	}
 
@@ -89,7 +89,7 @@ func union(a, b []string) [][]rune {
 // return it's key, otherwise it will return -1.
 func find(slice [][]rune, val []rune) int {
 	for i, item := range slice {
-		if utils.Equal(item, val) {
+		if slices.Equal(item, val) {
 			return i
 		}
 	}

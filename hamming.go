@@ -3,7 +3,7 @@ package edlib
 import (
 	"errors"
 
-	"github.com/hbollon/go-edlib/internal/utils"
+	"slices"
 )
 
 // HammingDistance calculate the edit distance between two given strings using only substitutions
@@ -15,12 +15,12 @@ func HammingDistance(str1, str2 string) (int, error) {
 
 	if len(runeStr1) != len(runeStr2) {
 		return 0, errors.New("Undefined for strings of unequal length")
-	} else if utils.Equal(runeStr1, runeStr2) {
+	} else if slices.Equal(runeStr1, runeStr2) {
 		return 0, nil
 	}
 
 	var counter int
-	for i := 0; i < len(runeStr1); i++ {
+	for i := range runeStr1 {
 		if runeStr1[i] != runeStr2[i] {
 			counter++
 		}
