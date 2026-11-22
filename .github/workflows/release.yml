@@ -17,7 +17,7 @@ jobs:
       releases_created: ${{ steps.release.outputs.releases_created }}
     steps:
       - name: Run Release Please
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@v5
         id: release
         with:
           config-file: .github/release-please-config.json
@@ -39,12 +39,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v7
         with:
-          go-version: "1.24"
+          go-version-file: go.mod
+          cache: false  # no dependencies, nothing to cache
 
       - name: Determine which version was released
         id: version-detect
@@ -74,7 +75,7 @@ jobs:
           fi
 
       - name: Run Release Please to create GitHub releases
-        uses: googleapis/release-please-action@v4
+        uses: googleapis/release-please-action@v5
         with:
           config-file: .github/release-please-config.json
           manifest-file: .github/release-please-manifest.json
