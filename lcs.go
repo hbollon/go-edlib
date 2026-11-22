@@ -159,14 +159,19 @@ func processLCSDiff(str1 string, str2 string, lcsMatrix [][]int, m, n int) []str
 // LCSEditDistance determines the edit distance between two strings using LCS function
 // (allow only insert and delete operations)
 func LCSEditDistance(str1, str2 string) int {
-	if len(str1) == 0 {
-		return len(str2)
-	} else if len(str2) == 0 {
-		return len(str1)
+	// Use rune lengths so non-ASCII strings are measured in characters, like
+	// the general LCS-based computation below.
+	runeStr1 := []rune(str1)
+	runeStr2 := []rune(str2)
+
+	if len(runeStr1) == 0 {
+		return len(runeStr2)
+	} else if len(runeStr2) == 0 {
+		return len(runeStr1)
 	} else if str1 == str2 {
 		return 0
 	}
 
 	lcs := LCS(str1, str2)
-	return (len([]rune(str1)) - lcs) + (len([]rune(str2)) - lcs)
+	return (len(runeStr1) - lcs) + (len(runeStr2) - lcs)
 }
