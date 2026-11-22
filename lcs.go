@@ -49,7 +49,7 @@ func LCSBacktrack(str1, str2 string) (string, error) {
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
-		return "", errors.New("Can't process and backtrack any LCS with empty string")
+		return "", errors.New("can't process and backtrack any LCS with empty string")
 	} else if slices.Equal(runeStr1, runeStr2) {
 		return str1, nil
 	}
@@ -79,7 +79,7 @@ func LCSBacktrackAll(str1, str2 string) ([]string, error) {
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
-		return nil, errors.New("Can't process and backtrack any LCS with empty string")
+		return nil, errors.New("can't process and backtrack any LCS with empty string")
 	} else if slices.Equal(runeStr1, runeStr2) {
 		return []string{str1}, nil
 	}
@@ -120,7 +120,7 @@ func LCSDiff(str1, str2 string) ([]string, error) {
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) == 0 || len(runeStr2) == 0 {
-		return nil, errors.New("Can't process LCS diff with empty string")
+		return nil, errors.New("can't process LCS diff with empty string")
 	} else if slices.Equal(runeStr1, runeStr2) {
 		return []string{str1}, nil
 	}

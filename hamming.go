@@ -14,7 +14,7 @@ func HammingDistance(str1, str2 string) (int, error) {
 	runeStr2 := []rune(str2)
 
 	if len(runeStr1) != len(runeStr2) {
-		return 0, errors.New("Undefined for strings of unequal length")
+		return 0, errors.New("undefined for strings of unequal length")
 	} else if slices.Equal(runeStr1, runeStr2) {
 		return 0, nil
 	}

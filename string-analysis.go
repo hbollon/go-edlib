@@ -56,7 +56,7 @@ func StringsSimilarity(str1 string, str2 string, algo Algorithm) (float32, error
 	case Qgram:
 		return QgramSimilarity(str1, str2, 2), nil
 	default:
-		return 0.0, errors.New("Illegal argument for algorithm method")
+		return 0.0, errors.New("illegal argument for algorithm method")
 	}
 }
 
