@@ -1,13 +1,39 @@
 # Golangci-lint documentation: https://golangci-lint.run/
+version: "2"
 
-# Analysis running options
 run:
   # Disable tests to avoid redundancy with test workflow
   tests: false
 
-  # Dirs to ignore
-  skip-dirs:
-    - internal/terraform
+linters:
+  enable:
+    - dupl
+    - goconst
+    - gocyclo
+    - godox
+    - lll
+    - misspell
+    - modernize
+    - prealloc
+    - revive
+    - unconvert
+    - unparam
+    - whitespace
+  settings:
+    gocyclo:
+      min-complexity: 20
+    govet:
+      enable:
+        - shadow
+    lll:
+      line-length: 140
+    misspell:
+      locale: US
+  exclusions:
+    presets:
+      - comments
+      - common-false-positives
+      - std-error-handling
 
 issues:
   # Maximum issues count per one linter
@@ -15,41 +41,7 @@ issues:
   # Maximum count of issues with the same text
   max-same-issues: 0
 
-# Configuration of specific linters
-linters-settings:
-  gocyclo:
-    min-complexity: 20
-
-  govet:
-    check-shadowing: true
-
-  misspell:
-    locale: US
-
-  lll:
-    line-length: 140
-  
-linters:
+formatters:
   enable:
-    - deadcode
-    - dupl
-    - errcheck
-    - exportloopref
-    - goconst
-    - gocyclo
-    - godox
     - gofmt
     - goimports
-    - golint
-    - govet
-    - lll
-    - maligned
-    - misspell
-    - prealloc
-    - rowserrcheck
-    - structcheck
-    - unconvert
-    - unparam
-    - unused
-    - varcheck
-    - whitespace
