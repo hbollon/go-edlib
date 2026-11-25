@@ -67,19 +67,20 @@ func CosineSimilarity(str1, str2 string, splitLength int) float32 {
 
 // Compute union between two string slices, convert result to rune matrix and return it
 func union(a, b []string) [][]rune {
-	m := make(map[string]bool)
-	for _, item := range a {
-		m[item] = true
-	}
-	for _, item := range b {
-		if _, ok := m[item]; !ok {
-			a = append(a, item)
+	m := make(map[string]bool, len(a)+len(b))
+	var words []string
+	for _, items := range [][]string{a, b} {
+		for _, item := range items {
+			if !m[item] {
+				m[item] = true
+				words = append(words, item)
+			}
 		}
 	}
 
-	// Convert a to rune matrix (with x -> words and y -> characters)
-	out := make([][]rune, len(a))
-	for i, word := range a {
+	// Convert words to rune matrix (with x -> words and y -> characters)
+	out := make([][]rune, len(words))
+	for i, word := range words {
 		out[i] = []rune(word)
 	}
 	return out

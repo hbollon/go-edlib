@@ -33,6 +33,8 @@ func TestCosineSimilarity(t *testing.T) {
 		{"Cosine sim 1", args{"Radiohead", "Carly Rae Jepsen"}, 0.0},
 		{"Cosine sim 2", args{"I love horror movies", "Lights out is a horror movie"}, 0.20412414},
 		{"Cosine sim 3", args{"love horror movies", "Lights out horror movie"}, 0.28867513},
+		{"Cosine sim repeated words 1", args{"a a b", "a"}, 0.70710677},
+		{"Cosine sim repeated words 2", args{"a", "a a b"}, 0.70710677},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -79,6 +81,7 @@ func Test_union(t *testing.T) {
 		want [][]rune
 	}{
 		{"Union function test", args{testArr1, testArr2}, [][]rune{{97}, {98}, {100}, {101}}},
+		{"Union function test with repeated items", args{[]string{"a", "a"}, []string{"b", "a", "b"}}, [][]rune{{97}, {98}}},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
