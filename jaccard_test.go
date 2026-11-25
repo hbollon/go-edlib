@@ -19,6 +19,9 @@ func TestJaccardSimilarity(t *testing.T) {
 		{"Jaccard sim 3", args{"love horror movies", "Lights out horror movie"}, 1.0 / 6.0},
 		{"Jaccard sim 4", args{"私の名前はジョンです", "私の名前はジョン・ドゥです"}, 0.0},
 		{"Jaccard sim 5", args{"🙂😄🙂😄 😄🙂😄", "🙂😄🙂😄 😄🙂😄 🙂😄🙂"}, 2.0 / 3.0},
+		{"Jaccard sim repeated words 1", args{"a", "a a"}, 1.0},
+		{"Jaccard sim repeated words 2", args{"a a", "a"}, 1.0},
+		{"Jaccard sim repeated words 3", args{"the cat and the dog", "the dog and the bird"}, 3.0 / 5.0},
 	}
 
 	for _, tt := range tests {

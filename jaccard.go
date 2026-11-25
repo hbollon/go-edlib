@@ -24,19 +24,13 @@ func JaccardSimilarity(str1, str2 string, splitLength int) float32 {
 		splittedStr2 = ShingleSlice(str2, splitLength)
 	}
 
-	// Conversion of splitted string into rune array
-	runeStr1 := make([][]rune, len(splittedStr1))
-	for i, str := range splittedStr1 {
-		runeStr1[i] = []rune(str)
-	}
-	runeStr2 := make([][]rune, len(splittedStr2))
-	for i, str := range splittedStr2 {
-		runeStr2[i] = []rune(str)
-	}
-
 	// Create union keywords slice between input strings
 	unionStr := union(splittedStr1, splittedStr2)
-	jacc := float32(len(runeStr1) + len(runeStr2) - len(unionStr))
+
+	// Size of the intersection, repeated words count once
+	size1 := len(union(splittedStr1, nil))
+	size2 := len(union(splittedStr2, nil))
+	jacc := float32(size1 + size2 - len(unionStr))
 
 	return jacc / float32(len(unionStr))
 }
